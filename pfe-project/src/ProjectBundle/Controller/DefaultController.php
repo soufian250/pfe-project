@@ -9,12 +9,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-
-        $response = new Response();
-        $response->setContent(json_encode([
-            'data' => 123,
-        ]));
-
-        return $response;
+        return  $this->render('@Project/Default/index.html.twig');
     }
 }
