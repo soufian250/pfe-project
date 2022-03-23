@@ -218,10 +218,13 @@
                          </li>
 
                          <li>
-                             <a class="dropdown-item d-flex align-items-center" href="#">
+                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                             <a class="dropdown-item d-flex align-items-center" href="{{ logout_path() }}">
+
                                  <i class="bi bi-box-arrow-right"></i>
                                  <span>Sign Out</span>
                              </a>
+                             {% endif %}
                          </li>
 
                      </ul><!-- End Profile Dropdown Items -->

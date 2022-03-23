@@ -1,6 +1,8 @@
-project_homepage:
+project_homepage_admin:
     path:     /admin
     defaults: { _controller: ProjectBundle:Default:index }
 
-project_index:
-    path:     /soz
+
+index_page:
+    path: /
+    defaults: { _controller: ProjectBundle:Default:index }

@@ -1,6 +1,6 @@
-{%extends '@Project/base.html.twig'%}
-
-{% block title %}Login{% endblock %}
+{% extends '@Project/base.html.twig' %}
+{# app/Resources/views/security/login.html.twig #}
+{# ... you will probably extend your base template, like base.html.twig #}
 
 {% block body %}
 
@@ -28,8 +28,8 @@
                                         <p class="text-center small">Enter your username & password to login</p>
                                     </div>
 
-                                    {% if errors %}
-                                        <div class="alert alert-danger">{{ errors.message }}</div>
+                                    {% if error %}
+                                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                                     {% endif  %}
 
                                     <form class="row g-3 needs-validation" novalidate action="{{ path('login') }}" method="post">
@@ -38,14 +38,16 @@
                                             <label for="yourUsername" class="form-label">Username</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" name="_username"  class="form-control" id="username" required>
+                                                <input type="text" id="username" name="_username" required class="form-control" />
+
                                                 <div class="invalid-feedback">Please enter your username.</div>
                                             </div>
                                         </div>
 
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Password</label>
-                                            <input type="password" name="_password" class="form-control" id="password" required value="{{ username }}">
+                                            <input type="password" id="password" class="form-control" required name="_password"/>
+
                                             <div class="invalid-feedback">Please enter your password!</div>
                                         </div>
 
@@ -83,4 +85,8 @@
         </div>
     </main><!-- End #main -->
 
+
 {% endblock %}
+
+
+

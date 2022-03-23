@@ -1,34 +1,47 @@
 <?php
 
-namespace AppBundle\DataFixtures\LoadUserData;
+namespace DataFixtures;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+
+
+use Doctrine\Bundle\FixturesBundle\ORMFixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LoadUserDataFixtures implements FixtureInterface, ContainerAwareInterface {
+class LoadUserDataFixtures extends AbstractFixture implements ORMFixtureInterface, ContainerAwareInterface , OrderedFixtureInterface {
+
 
     private $container;
 
-    public function load(ObjectManager $manager)
-    {
-        dump(767);die;
-        $user = new User();
+    public function setContainer(ContainerInterface $container = null) {
+        $this->container = $container;
+    }
 
-        $user->setUserName('soufian');
-        $user->setUserEmail('soufian@gmail.com');
-        $encoder = $this->container->get('security.password_encoder');
-        $password = $encoder->encodePassword('soufian');
-        $user->setUserPassword($password);
+
+    public function load(ObjectManager $manager )
+    {
+
+        $user = new \UserBundle\Entity\User();
+
+        $password = 'soufian';
+
+        $user->setSalt(md5(uniqid()));
+        $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
+        $user->setPassword($encoder->encodePassword($password, $user->getSalt()));
+
+        $user->setUsername('soufian');
+        $user->setEmail('soufian@gmail.com');
 
         $manager->persist($user);
         $manager->flush();
 
     }
 
-    public function setContainer(ContainerInterface $container = null)
+    public function getOrder()
     {
-        $this->container = $container;
+        return 1;
     }
 }

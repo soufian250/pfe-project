@@ -1,19 +1,17 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\Exception\AccountStatusException;
-use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
  *
  * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
  */
-class User implements UserCheckerInterface
+class User implements UserInterface
 {
     /**
      * @var int
@@ -27,14 +25,14 @@ class User implements UserCheckerInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255, unique=true)
+     * @ORM\Column(name="username", type="string", length=255)
      */
     private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
 
@@ -44,6 +42,37 @@ class User implements UserCheckerInterface
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255)
+     */
+    private $salt;
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     *
+     * @return User
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
 
 
     /**
@@ -128,14 +157,15 @@ class User implements UserCheckerInterface
         return $this->password;
     }
 
-    public function checkPreAuth(UserInterface $user)
+    public function getRoles()
     {
-        // TODO: Implement checkPreAuth() method.
+        return ['ROLE_USER'];
     }
 
-    public function checkPostAuth(UserInterface $user)
+
+    public function eraseCredentials()
     {
-        // TODO: Implement checkPostAuth() method.
+        // TODO: Implement eraseCredentials() method.
     }
 }
 
