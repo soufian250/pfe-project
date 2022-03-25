@@ -1,0 +1,19 @@
+ProjectBundle\Entity\Car:
+    type: entity
+    table: null
+    repositoryClass: ProjectBundle\Repository\CarRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        matriclue:
+            type: string
+            length: 255
+            unique: true
+        name:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
