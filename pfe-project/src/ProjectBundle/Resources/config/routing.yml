@@ -6,3 +6,13 @@ project_homepage_admin:
 index_page:
     path: /
     defaults: { _controller: ProjectBundle:Default:index }
+
+
+#Car
+car_add:
+    path: /car/add
+    defaults: { _controller: ProjectBundle:Car:add }
+
+car_show:
+    path: /car/show
+    defaults: { _controller: ProjectBundle:Car:show }
