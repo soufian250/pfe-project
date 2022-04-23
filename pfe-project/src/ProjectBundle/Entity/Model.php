@@ -3,19 +3,14 @@
 namespace ProjectBundle\Entity;
 
 /**
- * Car
+ * Model
  */
-class Car
+class Model
 {
     /**
      * @var int
      */
     private $id;
-
-    /**
-     * @var string
-     */
-    private $matriclue;
 
     /**
      * @var string
@@ -34,35 +29,11 @@ class Car
     }
 
     /**
-     * Set matriclue
-     *
-     * @param string $matriclue
-     *
-     * @return Car
-     */
-    public function setMatriclue($matriclue)
-    {
-        $this->matriclue = $matriclue;
-
-        return $this;
-    }
-
-    /**
-     * Get matriclue
-     *
-     * @return string
-     */
-    public function getMatriclue()
-    {
-        return $this->matriclue;
-    }
-
-    /**
      * Set name
      *
      * @param string $name
      *
-     * @return Car
+     * @return Model
      */
     public function setName($name)
     {
