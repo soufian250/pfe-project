@@ -16,4 +16,15 @@ ProjectBundle\Entity\Car:
         name:
             type: string
             length: 255
+        updatedAt:
+            type: datetime
+        createdAt:
+            type: datetime
+        carImage:
+            mapping: carimage        # required
+            filename_property: imageName  # required
+#            size: imageSize
+#            mime_type: imageMimeType
+#            original_name: imageOriginalName
+#            dimensions: imageDimensions
     lifecycleCallbacks: {  }

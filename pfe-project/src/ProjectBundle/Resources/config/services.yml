@@ -2,3 +2,14 @@ services:
 #    project.example:
 #        class: ProjectBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    car.twig_extension.carextension:
+      class: ProjectBundle\Twig\CarExtension
+      arguments: ["@doctrine.orm.default_entity_manager"]
+      tags:
+        - { name: twig.extension }
+
+    car.cartype:
+      class: ProjectBundle\Form\CarType
+      arguments: [ "@doctrine.orm.entity_manager",'@service_container' ]
+      tags:
+        - { name: form.type }
