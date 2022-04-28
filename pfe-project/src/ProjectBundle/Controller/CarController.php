@@ -36,7 +36,10 @@ class CarController extends Controller
 
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $request->files->get('post');
+
 
             $car = $form->getData();
 

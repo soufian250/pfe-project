@@ -26,9 +26,10 @@ class CarType extends AbstractType
     {
         $builder ->add('matriclue', TextType::class)
             ->add('name', TextType::class)
-            ->add('car_name',FileType::class,[
+            ->add('carimage',FileType::class,[
                 'mapped'=> false,
-                'required'=>false
+                'required'=>false,
+                'label'=> 'upload image please'
 
             ])
             ->add('save', SubmitType::class, ['label' => 'Valider']);
