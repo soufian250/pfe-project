@@ -17,3 +17,12 @@ car_add:
 car_show:
     path: /car/show
     defaults: { _controller: ProjectBundle:Car:show }
+
+#Reservation
+reservation_add:
+    path: /reservation/add
+    defaults: { _controller: ProjectBundle:Reservation:add }
+
+reservation_show:
+    path: /reservation/show
+    defaults: { _controller: ProjectBundle:Reservation:show }
