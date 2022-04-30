@@ -16,6 +16,9 @@ ProjectBundle\Entity\Car:
         name:
             type: string
             length: 255
+        imageName:
+            type: string
+            length: 255
         updatedAt:
             type: datetime
             nullable: true

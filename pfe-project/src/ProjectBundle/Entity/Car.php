@@ -146,4 +146,33 @@ class Car
     {
         return $this->createdAt;
     }
+    /**
+     * @var string
+     */
+    private $imageName;
+
+
+    /**
+     * Set imageName
+     *
+     * @param string $imageName
+     *
+     * @return Car
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * Get imageName
+     *
+     * @return string
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
 }

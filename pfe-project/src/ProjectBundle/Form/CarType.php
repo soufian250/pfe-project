@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\Validator\Constraints\File;
 
 class CarType extends AbstractType
 {
@@ -26,11 +27,10 @@ class CarType extends AbstractType
     {
         $builder ->add('matriclue', TextType::class)
             ->add('name', TextType::class)
-            ->add('carimage',FileType::class,[
-                'mapped'=> false,
-                'required'=>false,
-                'label'=> 'upload image please'
-
+            ->add('imageName', FileType::class, [
+                'label' => 'Image',
+                'mapped' => false,
+                'required' => false,
             ])
             ->add('save', SubmitType::class, ['label' => 'Valider']);
     }

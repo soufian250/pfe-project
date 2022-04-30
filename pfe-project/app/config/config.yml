@@ -9,17 +9,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-
-vich_uploader:
-    db_driver: orm
-    mappings:
-        carimage:
-            namer: vich_uploader.namer_uniqid
-            uri_prefix: /bundles/recar/images
-            upload_destination: '%kernel.project_dir%/web/bundles/recar/images/'
-            inject_on_load: true
-            delete_on_update: true
-            delete_on_remove: true
+    car_image_directory: '%kernel.project_dir%/web/uploads/recar/images'
 
 
 framework:

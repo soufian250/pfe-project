@@ -25,9 +25,7 @@ class ReservationType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder ->add('startDate', DateTimeType::class, [
-            'placeholder' => 'Select a value',
-        ])
+        $builder ->add('startDate', DateTimeType::class)
         ->add('endDate', DateTimeType::class, [
             'placeholder' => 'Select a value',
         ])->add('save', SubmitType::class, ['label' => 'Valider']);

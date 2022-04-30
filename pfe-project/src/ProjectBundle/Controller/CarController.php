@@ -10,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+
 
 class CarController extends Controller
 {
@@ -21,12 +23,12 @@ class CarController extends Controller
         return  $this->render('@Project/Default/index.html.twig');
     }
 
-    public function showAction(): ?Response
+    public function showAction()
     {
         return  $this->render('@Project/Car/show.html.twig');
     }
 
-    public function addAction(Request $request): ?Response
+    public function addAction(Request $request)
     {
 
 
@@ -39,7 +41,27 @@ class CarController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $file = $request->files->get('post');
+            $imageName = $form->get('imageName')->getData();
+            if ($imageName) {
+                $originalFilename = pathinfo($imageName->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+               // $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $newFilename = $originalFilename.'-'.uniqid().'.'.$imageName->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $imageName->move(
+                        $this->getParameter('car_image_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $car->setImageName($newFilename);
+            }
 
 
             $car = $form->getData();
