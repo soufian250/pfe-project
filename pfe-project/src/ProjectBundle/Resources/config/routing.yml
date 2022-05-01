@@ -16,3 +16,9 @@ car_add:
 car_show:
     path: /car/show
     defaults: { _controller: ProjectBundle:Car:show }
+
+#home
+home:
+    path: /home
+    defaults: { _controller: ProjectBundle:Home:index }
+
