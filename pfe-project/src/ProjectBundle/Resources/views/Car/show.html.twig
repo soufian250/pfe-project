@@ -19,56 +19,31 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">List des voiture</h5>
-                            <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
-
+                            <h5 class="card-title">List des voitures</h5>
                             <!-- Table with stripped rows -->
                             <table class="table datatable">
                                 <thead>
                                 <tr>
-                                    <th scope="col">Preview</th>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Sold</th>
-                                    <th scope="col">Revenue</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Voiture</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row"><a href="#"><img width="29px" height="29px" src="{{ asset('assets/img/product-1.jpg') }}" alt=""></a></th>
-                                    <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                                    <td>$64</td>
-                                    <td class="fw-bold">124</td>
-                                    <td>$5,828</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
-                                    <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                                    <td>$46</td>
-                                    <td class="fw-bold">98</td>
-                                    <td>$4,508</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
-                                    <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                                    <td>$59</td>
-                                    <td class="fw-bold">74</td>
-                                    <td>$4,366</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
-                                    <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                                    <td>$32</td>
-                                    <td class="fw-bold">63</td>
-                                    <td>$2,016</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                                    <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                                    <td>$79</td>
-                                    <td class="fw-bold">41</td>
-                                    <td>$3,239</td>
-                                </tr>
+                                    {% for car in cars %}
+                                        <tr>
+{#                                            <th ><a href="#"><img  src="{{ asset('assets/img/product-1.jpg') }}" alt=""></a></th>#}
+                                            {% if car.imageName != "" %}
+                                                <th scope="row"> <img alt="car" width="29px" height="29px" src="{{ asset('uploads/recar/images/'~car.imageName)  }}" /></th>
+                                            {% endif %}
+                                            <td>{{ car.name }}</td>
+                                            <td>
+                                                <a href="#"> <i class="ri-delete-bin-3-line m-2"> </i></a>
+                                                <a href="{{ path('car_edit',{'id':car.id}) }}"> <i class="ri-mark-pen-line"> </i></a>
+
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->

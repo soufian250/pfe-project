@@ -25,7 +25,14 @@ class CarController extends Controller
 
     public function showAction()
     {
-        return  $this->render('@Project/Car/show.html.twig');
+
+
+        $cars=$this->getDoctrine()->getRepository(Car::class)->findAll();
+
+
+        return  $this->render('@Project/Car/show.html.twig',[
+            'cars'=>$cars
+        ]);
     }
 
     public function addAction(Request $request)
@@ -70,7 +77,7 @@ class CarController extends Controller
             $entityManager->persist($car);
             $entityManager->flush();
 
-            return $this->redirectToRoute('index_page');
+            return $this->redirectToRoute('car_show');
         }
 
 
@@ -78,6 +85,58 @@ class CarController extends Controller
             'form' => $form->createView(),
         ]);
 
+
+    }
+
+    public function editAction(Request $request,$id)
+    {
+
+        $em=$this->getDoctrine()->getManager();
+
+        $car=$em->getRepository(Car::class)->find($id);
+
+        $form = $this->createForm(CarType::class,$car);
+
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $imageName = $form->get('imageName')->getData();
+            if ($imageName) {
+                $originalFilename = pathinfo($imageName->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                // $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $newFilename = $originalFilename.'-'.uniqid().'.'.$imageName->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $imageName->move(
+                        $this->getParameter('car_image_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+
+                $car->setImageName($newFilename);
+            }
+
+
+            $car = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($car);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('index_page');
+        }
+
+
+        return $this->render('@Project/Car/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
 
     }
 }
