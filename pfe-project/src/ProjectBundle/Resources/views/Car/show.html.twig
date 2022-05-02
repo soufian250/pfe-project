@@ -34,12 +34,12 @@
                                         <tr>
 {#                                            <th ><a href="#"><img  src="{{ asset('assets/img/product-1.jpg') }}" alt=""></a></th>#}
                                             {% if car.imageName != "" %}
-                                                <th scope="row"> <img alt="car" width="29px" height="29px" src="{{ asset('uploads/recar/images/'~car.imageName)  }}" /></th>
+                                                <th scope="row"> <img alt="car" width="30px" height="30px" src="{{ asset('uploads/recar/images/'~car.imageName)  }}" /></th>
                                             {% endif %}
                                             <td>{{ car.name }}</td>
                                             <td>
-                                                <a href="#"> <i class="ri-delete-bin-3-line m-2"> </i></a>
-                                                <a href="{{ path('car_edit',{'id':car.id}) }}"> <i class="ri-mark-pen-line"> </i></a>
+                                                <a href="{{ path('car_delete',{'id':car.id }) }}"> <i class="ri-delete-bin-3-line m-2"> </i></a>
+                                                <a href="{{ path('car_edit',{'id':car.id }) }}"> <i class="ri-mark-pen-line"> </i></a>
 
                                             </td>
                                         </tr>
