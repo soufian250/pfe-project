@@ -1,0 +1,19 @@
+ProjectBundle\Entity\Reservation:
+  type: entity
+  table: null
+  repositoryClass: ProjectBundle\Repository\ReservationRepository
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    startDate:
+      type: datetime
+      unique: true
+    endDate:
+      type: datetime
+      unique: true
+  lifecycleCallbacks: {  }
+

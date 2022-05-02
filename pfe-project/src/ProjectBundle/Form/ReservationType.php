@@ -4,14 +4,14 @@ namespace ProjectBundle\Form;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\DependencyInjection\Container;
-use Symfony\Component\Validator\Constraints\File;
 
-class CarType extends AbstractType
+class ReservationType extends AbstractType
 {
 
     private $entityManager;
@@ -25,14 +25,11 @@ class CarType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder ->add('matriclue', TextType::class)
-            ->add('name', TextType::class)
-            ->add('imageName', FileType::class, [
-                'label' => 'Image',
-                'mapped' => false,
-                'required' => false,
-            ])
-            ->add('save', SubmitType::class, ['label' => 'Valider']);
+        $builder ->add('startDate', DateTimeType::class)
+        ->add('endDate', DateTimeType::class, [
+            'placeholder' => 'Select a value',
+        ])->add('save', SubmitType::class, ['label' => 'Valider']);
+
     }
 
 }
