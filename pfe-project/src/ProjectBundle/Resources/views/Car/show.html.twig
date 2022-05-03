@@ -38,11 +38,13 @@
                                             {% endif %}
                                             <td>{{ car.name }}</td>
                                             <td>
-                                                <a href="{{ path('car_delete',{'id':car.id }) }}"> <i class="ri-delete-bin-3-line m-2"> </i></a>
+                                                <a href="#" onclick="deleteCar({{ car.id }})"> <i class="ri-delete-bin-3-line m-2"> </i></a>
                                                 <a href="{{ path('car_edit',{'id':car.id }) }}"> <i class="ri-mark-pen-line"> </i></a>
-
                                             </td>
                                         </tr>
+
+
+
                                     {% endfor %}
                                 </tbody>
                             </table>

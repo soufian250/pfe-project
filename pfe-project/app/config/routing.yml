@@ -10,3 +10,10 @@ project:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
+recar_api:
+    type: rest
+    resource: "@ProjectBundle/Resources/config/routing_api.yml"
+    prefix:   /apicar
+
+

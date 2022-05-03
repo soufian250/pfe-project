@@ -22,9 +22,6 @@ car_edit:
     path: /car/edit/{id}
     defaults: { _controller: ProjectBundle:Car:edit }
 
-car_delete:
-    path: /car/delete/{id}
-    defaults: { _controller: ProjectBundle:Car:delete }
 
 #Reservation
 reservation_add:

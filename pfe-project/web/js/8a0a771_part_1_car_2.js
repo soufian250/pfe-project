@@ -4,14 +4,12 @@ $(document).ready(function(){
 
 })
 
-function deleteCar(idCar) {
-
-
+function deleteCar() {
 
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
-            confirmButton: 'btn btn-success m-3',
-            cancelButton: 'btn btn-danger'
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger m-3'
         },
         buttonsStyling: false
     })
@@ -26,18 +24,11 @@ function deleteCar(idCar) {
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
-
-            $.ajax({
-                url:"/apicar/car/delete",
-                type:'GET',
-                data:{
-                    idCar: idCar
-                },
-                dataType:'json',
-                success:function(data){
-                   location.reload();
-                }
-            });
+            swalWithBootstrapButtons.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
         } else if (
             /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
