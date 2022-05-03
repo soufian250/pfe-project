@@ -88,6 +88,16 @@ class CarController extends Controller
 
     }
 
+    public function deleteAction(Request $request,$id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $car=$em->getRepository(Car::class)->find($id);
+        $em->remove($car);
+        $em->flush();
+        return $this->redirectToRoute('index_page');
+
+    }
+
     public function editAction(Request $request,$id)
     {
 
