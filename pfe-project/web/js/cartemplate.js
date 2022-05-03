@@ -38,15 +38,6 @@ function deleteCar(idCar) {
                    location.reload();
                 }
             });
-        } else if (
-            /* Read more about handling dismissals below */
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalWithBootstrapButtons.fire(
-                'Cancelled',
-                'Your imaginary file is safe :)',
-                'error'
-            )
         }
     })
 
