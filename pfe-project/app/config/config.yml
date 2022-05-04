@@ -119,6 +119,10 @@ assetic:
             inputs:
                 - 'bundles/project/js/car.js'
             output: "js/cartemplate.js"
+        recar_home_js:
+            inputs:
+                - 'bundles/home/js/home.js'
+            output: "js/hometemplate.js"
 
 # api_rest Configuration
 fos_rest:
