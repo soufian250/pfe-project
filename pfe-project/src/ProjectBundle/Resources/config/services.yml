@@ -7,16 +7,23 @@ services:
       arguments: ["@doctrine.orm.default_entity_manager"]
       tags:
         - { name: twig.extension }
-
+#CAR
     car.cartype:
       class: ProjectBundle\Form\CarType
       arguments: [ "@doctrine.orm.entity_manager",'@service_container' ]
       tags:
         - { name: form.type }
 
+#Reservation
     reservation.reservationtype:
       class: ProjectBundle\Form\ReservationType
       arguments: [ "@doctrine.orm.entity_manager",'@service_container' ]
       tags:
         - { name: form.type }
 
+#Client
+    client.clienttype:
+      class: ProjectBundle\Form\ClientType
+      arguments: [ "@doctrine.orm.entity_manager",'@service_container' ]
+      tags:
+        - { name: form.type }

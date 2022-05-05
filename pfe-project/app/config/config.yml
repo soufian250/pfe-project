@@ -115,6 +115,10 @@ assetic:
     filters:
         cssrewrite: ~
     assets:
+        client_js:
+            inputs:
+                - 'bundles/project/js/client.js'
+            output: "js/clienttemplate.js"
         recar_js:
             inputs:
                 - 'bundles/project/js/car.js'
@@ -123,6 +127,7 @@ assetic:
             inputs:
                 - 'bundles/home/js/home.js'
             output: "js/hometemplate.js"
+
 
 # api_rest Configuration
 fos_rest:

@@ -4,9 +4,8 @@ $(document).ready(function(){
 
 })
 
+
 function deleteCar(idCar) {
-
-
 
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -43,3 +42,9 @@ function deleteCar(idCar) {
 
 
 }
+
+
+alert(655);
+
+
+
