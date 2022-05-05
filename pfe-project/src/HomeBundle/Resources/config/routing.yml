@@ -1,0 +1,8 @@
+home_homepage:
+    path:     /index
+    defaults: { _controller: HomeBundle:Default:index }
+
+
+cars_listing:
+    path:     /cars/listing
+    defaults: { _controller: HomeBundle:Default:CarsListing }

@@ -4,13 +4,50 @@ imports:
     - { resource: services.yml }
     - { resource: "@ProjectBundle/Resources/config/services.yml" }
     - { resource: "@UserBundle/Resources/config/services.yml" }
+    - { resource: "@HomeBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    car_image_directory: '%kernel.project_dir%/web/uploads/recar/images'
 
+#liip_imagine:
+#    resolvers:
+#        default:
+#            web_path:
+#                web_root: "%kernel.project_dir%/web/uploads/recar/images"
+#                cache_prefix: /bundles/recar/images/uploads/cache
+#    loaders:
+#        default:
+#            filesystem:
+#                data_root:
+#                    - "%kernel.project_dir%/web"
+#                    - "%kernel.project_dir%/web/bundles/reacar/images"
+#                bundle_resources:
+#                    enabled: true
+#    filter_sets:
+#        my_thumb:
+#            quality: 100
+#            filters:
+#                thumbnail: { size: [50, 50], mode: outbound }
+#        size_two:
+#            quality: 100
+#            filters:
+#                thumbnail: { size: [80, 80], mode: outbound }
+#        size_three:
+#            quality: 100
+#            filters:
+#                thumbnail: { size: [300, 290], mode: outbound }
+#        size_four:
+#            quality: 100
+#            filters:
+#                thumbnail: { size: [150, 150] }
+#        my_thumb_default:
+#            quality: 100
 framework:
+    templating:
+        engines: [ 'twig' ]
     #esi: ~
     #translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
@@ -71,3 +108,37 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: false
+    filters:
+        cssrewrite: ~
+    assets:
+        recar_js:
+            inputs:
+                - 'bundles/project/js/car.js'
+            output: "js/cartemplate.js"
+        recar_home_js:
+            inputs:
+                - 'bundles/home/js/home.js'
+            output: "js/hometemplate.js"
+
+# api_rest Configuration
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'
+        formats:
+            xml: true
+            json : true
+        templating_formats:
+            html: true
+        force_redirects:
+            html: true
+        failed_validation: HTTP_BAD_REQUEST
+        default_engine: twig
+    routing_loader:
+        default_format: json
