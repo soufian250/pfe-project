@@ -36,6 +36,27 @@ class LoadUserDataFixtures extends AbstractFixture implements ORMFixtureInterfac
         $manager->persist($user);
         $manager->flush();
 
+
+
+//        for ($i; $i<5; $i++){
+//            $type = new \ProjectBundle\Entity\Type();
+//            $type->setName('');
+//        }
+//
+//        $type->setName('coupés');
+//        $type->setName('berlines');
+//        $type->setName('hayons');
+//        $type->setName('break');
+//        $type->setName('limousines');
+//        $type->setName('crossovers');
+//        $type->setName('cabriolets');
+//        $type->setName('minibus');
+//        $type->setName('roadsters');
+//        $type->setName('targa');
+
+        $manager->persist($type);
+        $manager->flush();
+
     }
 
     public function getOrder()

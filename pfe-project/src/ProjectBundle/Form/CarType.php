@@ -3,6 +3,8 @@
 namespace ProjectBundle\Form;
 
 use Doctrine\ORM\EntityManagerInterface;
+use ProjectBundle\Entity\Type;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -33,6 +35,12 @@ class CarType extends AbstractType
             ->add('transmission', TextType::class)
             ->add('fuel', TextType::class)
             ->add('air_conditioner', CheckboxType::class)
+            ->add('type',EntityType::class,array(
+                'class'=>Type::class,
+                'choice_label'=>'name',
+                'required'=>false
+
+            ))
             ->add('imageName', FileType::class, [
                 'label' => 'Image',
                 'mapped' => false,
