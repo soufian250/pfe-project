@@ -8,7 +8,7 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Afficher les voitures</li>
+                    <li class="breadcrumb-item active">Afficher les client</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -19,30 +19,31 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">List des voitures</h5>
+                            <h5 class="card-title">List des client</h5>
                             <!-- Table with stripped rows -->
                             <table class="table datatable">
                                 <thead>
                                 <tr>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Voiture</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Prénom</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">CIN</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    {% for car in cars %}
+                                    {% for client in clients %}
+
                                         <tr>
-{#                                            <th ><a href="#"><img  src="{{ asset('assets/img/product-1.jpg') }}" alt=""></a></th>#}
-                                            {% if car.imageName != "" %}
-                                                <th scope="row"> <img alt="car" width="30px" height="30px" src="{{ asset('uploads/recar/images/'~car.imageName)  }}" /></th>
-                                            {% endif %}
-                                            <td>{{ car.name }}</td>
+                                            <td>{{ client.firstName }}</td>
+                                            <td>{{ client.lastName }}</td>
+                                            <td>{{ client.email }}</td>
+                                            <td>{{ client.cin }}</td>
                                             <td>
-                                                <a href="#" onclick="deleteCar({{ car.id }})"> <i class="ri-delete-bin-3-line m-2"> </i></a>
-                                                <a href="{{ path('car_edit',{'id':car.id }) }}"> <i class="ri-mark-pen-line"> </i></a>
+                                                <a href="#" onclick="deleteClient({{ client.id }})"> <i class="ri-delete-bin-3-line m-2"> </i></a>
+                                                <a href="{{ path('client_edit',{'id':client.id }) }}"> <i class="ri-mark-pen-line"> </i></a>
                                             </td>
                                         </tr>
-
 
 
                                     {% endfor %}

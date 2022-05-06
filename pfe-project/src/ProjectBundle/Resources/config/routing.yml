@@ -50,3 +50,18 @@ reservation_add:
 reservation_show:
     path: /reservation/show
     defaults: { _controller: ProjectBundle:Reservation:show }
+
+
+#Client
+client_add:
+    path: /client/add
+    defaults: { _controller: ProjectBundle:Client:add }
+
+client_show:
+    path: /client/show
+    defaults: { _controller: ProjectBundle:Client:show }
+
+
+client_edit:
+    path: /client/edit/{id}
+    defaults: { _controller: ProjectBundle:Client:edit }

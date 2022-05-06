@@ -11,8 +11,8 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ path('index_page') }}">Home</a></li>
-                    <li class="breadcrumb-item">Gestion de voiture</li>
-                    <li class="breadcrumb-item active">Ajouter une voiture</li>
+                    <li class="breadcrumb-item">Gestion de client</li>
+                    <li class="breadcrumb-item active">Modifier une client</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -24,20 +24,12 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Ajouter une voiture </h5>
+                            <h5 class="card-title">Modifier un client </h5>
 
                             <!-- General Form Elements -->
 
                                 {{ form_start(form) }}
-                                    {{ form_row(form.name) }}
-                                    {{ form_row(form.matriclue) }}
-                                    {{ form_row(form.seat) }}
-                                    {{ form_row(form.door) }}
-                                    {{ form_row(form.transmission) }}
-                                    {{ form_row(form.fuel) }}
-                                    {{ form_row(form.air_conditioner) }}
-                                    {{ form_row(form.imageName) }}
-                                    {{ form_row(form.save) }}
+                                {{ form_widget(form) }}
                                 {{ form_end(form) }}
 
                         {#        <div class="row mb-3">
