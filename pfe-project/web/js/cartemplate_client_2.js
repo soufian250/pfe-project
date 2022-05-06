@@ -1,11 +1,8 @@
-$(document).ready(function(){
+alert(54);
 
 
+function deleteClient(idClient) {
 
-})
-
-
-function deleteCar(idCar) {
 
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -27,10 +24,10 @@ function deleteCar(idCar) {
         if (result.isConfirmed) {
 
             $.ajax({
-                url:"/apicar/car/delete",
+                url:"/apiclient/client/delete",
                 type:'GET',
                 data:{
-                    idCar: idCar
+                    idClient: idClient
                 },
                 dataType:'json',
                 success:function(data){

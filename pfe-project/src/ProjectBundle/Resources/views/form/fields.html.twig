@@ -1,0 +1,16 @@
+{% form_theme form _self %}
+
+{% block form_row %}
+
+    {% spaceless %}
+        <div class="form-group row">
+            {{ form_label(form ) }}
+
+            <div class="col-sm-8">
+
+                {{ form_widget(form) |raw }}
+            </div>
+
+        </div>
+    {% endspaceless %}
+{% endblock form_row %}

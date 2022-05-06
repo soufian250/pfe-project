@@ -1,7 +1,7 @@
-ProjectBundle\Entity\Model:
+ProjectBundle\Entity\Type:
   type: entity
   table: null
-  repositoryClass: ProjectBundle\Repository\ModelRepository
+  repositoryClass: ProjectBundle\Repository\TypeRepository
   id:
     id:
       type: integer
@@ -12,4 +12,8 @@ ProjectBundle\Entity\Model:
     name:
       type: string
       length: 255
+  oneToMany:
+    cars:
+      targetEntity: ProjectBundle\Entity\Car
+      mappedBy: type
   lifecycleCallbacks: {  }

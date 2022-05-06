@@ -1,22 +1,38 @@
 services:
-#    project.example:
-#        class: ProjectBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+# --TWIG EXTENSION --
+#Car
     car.twig_extension.carextension:
       class: ProjectBundle\Twig\CarExtension
       arguments: ["@doctrine.orm.default_entity_manager"]
       tags:
         - { name: twig.extension }
 
+#Client
+    client.twig_extension.clientxtension:
+      class: ProjectBundle\Twig\ClientExtension
+      arguments: ["@doctrine.orm.default_entity_manager"]
+      tags:
+        - { name: twig.extension }
+
+# --TWIG EXTENSION --
+
+#CAR
     car.cartype:
       class: ProjectBundle\Form\CarType
       arguments: [ "@doctrine.orm.entity_manager",'@service_container' ]
       tags:
         - { name: form.type }
 
+#Reservation
     reservation.reservationtype:
       class: ProjectBundle\Form\ReservationType
       arguments: [ "@doctrine.orm.entity_manager",'@service_container' ]
       tags:
         - { name: form.type }
 
+#Client
+    client.clienttype:
+      class: ProjectBundle\Form\ClientType
+      arguments: [ "@doctrine.orm.entity_manager",'@service_container' ]
+      tags:
+        - { name: form.type }
