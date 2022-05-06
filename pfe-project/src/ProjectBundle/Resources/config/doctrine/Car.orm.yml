@@ -19,10 +19,33 @@ ProjectBundle\Entity\Car:
         imageName:
             type: string
             length: 255
+        seat:
+            type: integer
+            length: 10
+        door:
+            type: integer
+            length: 10
+        air_conditioner:
+            type: boolean
+            options:
+                default: false
+        transmission:
+            type: string
+            length: 255
+        fuel:
+            type: string
+            length: 255
         updatedAt:
             type: datetime
             nullable: true
         createdAt:
             type: datetime
             nullable: true
+    manyToOne:
+        type:
+            targetEntity: ProjectBundle\Entity\Type
+            inversedBy: types
+            joinColumn:
+                name: type_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

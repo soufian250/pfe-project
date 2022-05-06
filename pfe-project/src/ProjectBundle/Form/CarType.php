@@ -4,6 +4,7 @@ namespace ProjectBundle\Form;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -27,6 +28,11 @@ class CarType extends AbstractType
     {
         $builder ->add('matriclue', TextType::class)
             ->add('name', TextType::class)
+            ->add('seat', TextType::class)
+            ->add('door', TextType::class)
+            ->add('transmission', TextType::class)
+            ->add('fuel', TextType::class)
+            ->add('air_conditioner', CheckboxType::class)
             ->add('imageName', FileType::class, [
                 'label' => 'Image',
                 'mapped' => false,

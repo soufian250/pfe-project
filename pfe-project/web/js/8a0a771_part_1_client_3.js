@@ -6,7 +6,7 @@ $(document).ready(function(){
 })
 
 
-function deleteClient(idClient) {
+function deleteCar(idClient) {
 
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {

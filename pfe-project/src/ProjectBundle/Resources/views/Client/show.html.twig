@@ -26,6 +26,7 @@
                                 <tr>
                                     <th scope="col">Nom</th>
                                     <th scope="col">Prénom</th>
+                                    <th scope="col">Email</th>
                                     <th scope="col">CIN</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -36,6 +37,7 @@
                                         <tr>
                                             <td>{{ client.firstName }}</td>
                                             <td>{{ client.lastName }}</td>
+                                            <td>{{ client.email }}</td>
                                             <td>{{ client.cin }}</td>
                                             <td>
                                                 <a href="#" onclick="deleteClient({{ client.id }})"> <i class="ri-delete-bin-3-line m-2"> </i></a>

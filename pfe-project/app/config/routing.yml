@@ -20,4 +20,10 @@ recar_api:
     resource: "@ProjectBundle/Resources/config/routing_api.yml"
     prefix:   /apicar
 
+reclient_api:
+    type: rest
+    resource: "@HomeBundle/Resources/config/routing_api.yml"
+    prefix: /apiclient
+
+
 
