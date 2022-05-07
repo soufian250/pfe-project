@@ -23,12 +23,12 @@ class ReservationController extends Controller
         return  $this->render('@Project/Default/index.html.twig');
     }
 
-    public function showAction(): ?Response
+    public function showAction()
     {
         return  $this->render('@Project/Reservation/show.html.twig');
     }
 
-    public function addAction(Request $request): ?Response
+    public function addAction(Request $request)
     {
 
 

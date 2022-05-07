@@ -35,6 +35,10 @@
     <link href="{{ asset('assets/vendor/jquery/jquery.modal.min.css') }}" rel="stylesheet">
 
 
+
+    <link href="{{ asset('assets/lib/Datepicker.js-master/dist/css/datepicker.material.css') }}" rel="stylesheet">
+
+
     {% block stylesheets %}
         {% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}"/>
@@ -378,6 +382,10 @@
 
        <!-- jQuery Modal -->
        <script src="{{ asset('assets/vendor/jquery/jquery.modal.min.js') }}"></script>
+
+
+       <!-- Datepicker JS -->
+       <script src="{{ asset('assets/lib/Datepicker.js-master/dist/datepicker.js') }}"></script>
 
 
        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

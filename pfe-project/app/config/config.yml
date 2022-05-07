@@ -67,6 +67,7 @@ framework:
     fragments: ~
     http_method_override: true
     assets: ~
+
     php_errors:
         log: true
 
@@ -129,7 +130,10 @@ assetic:
             inputs:
                 - 'bundles/home/js/home.js'
             output: "js/hometemplate.js"
-
+        reservation_js:
+            inputs:
+                - 'bundles/project/js/reservation.js'
+            output: "js/reservationtemplate.js"
 
 # api_rest Configuration
 fos_rest:
