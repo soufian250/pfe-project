@@ -45,6 +45,9 @@ class CarType extends AbstractType
                 'label' => 'Image',
                 'mapped' => false,
                 'required' => false,
+                'attr'=>[
+                    'class'=>'form-control mb-2'
+                ]
             ])
             ->add('save', SubmitType::class, ['label' => 'Valider']);
     }
