@@ -3,7 +3,6 @@ project_homepage_admin:
     path:     /admin
     defaults: { _controller: ProjectBundle:Default:index }
 
-
 index_page:
     path: /
     defaults: { _controller: ProjectBundle:Default:index }
@@ -42,7 +41,24 @@ client_show:
     path: /client/show
     defaults: { _controller: ProjectBundle:Client:show }
 
-
 client_edit:
     path: /client/edit/{id}
     defaults: { _controller: ProjectBundle:Client:edit }
+
+
+#Blog
+post_add:
+    path: /post/add
+    defaults: { _controller: ProjectBundle:Blog:add }
+
+post_show:
+    path: /post/show
+    defaults: { _controller: ProjectBundle:Blog:show }
+
+post_edit:
+    path: /post/edit/{id}
+    defaults: { _controller: ProjectBundle:Blog:edit }
+
+post_list:
+    path: /post/list
+    defaults: { _controller: ProjectBundle:Blog:list }

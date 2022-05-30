@@ -36,3 +36,10 @@ services:
       arguments: [ "@doctrine.orm.entity_manager",'@service_container' ]
       tags:
         - { name: form.type }
+
+#Blog
+    blog.posttype:
+      class: ProjectBundle\Form\PostType
+      arguments: [ "@doctrine.orm.entity_manager",'@service_container' ]
+      tags:
+        - { name: form.type }

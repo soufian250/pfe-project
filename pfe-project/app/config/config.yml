@@ -10,7 +10,9 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    car_image_directory: '%kernel.project_dir%/web/uploads/recar/images'
+    car_image_directory: '%kernel.project_dir%/web/uploads/recar/car/images'
+    post_image_directory: '%kernel.project_dir%/web/uploads/recar/post/images'
+
 
 #liip_imagine:
 #    resolvers:
