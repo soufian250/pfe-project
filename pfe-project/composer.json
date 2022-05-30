@@ -15,7 +15,7 @@
     },
     "require": {
         "php": "^5.6|^7.3|^7.4|^8.0",
-        "ext-http": "*",
+        
         "ext-intl": "*",
         "ext-json": "*",
         "doctrine/doctrine-bundle": "^1.6",

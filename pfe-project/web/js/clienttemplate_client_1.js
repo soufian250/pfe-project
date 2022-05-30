@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 
 
-})
+});
 
 
 function deleteClient(idClient) {
@@ -43,3 +43,8 @@ function deleteClient(idClient) {
 
 
 }
+
+
+
+
+

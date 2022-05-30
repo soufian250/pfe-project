@@ -1,0 +1,14 @@
+<?php
+
+namespace ProjectBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Post
+ */
+class Post
+{
+
+
+}

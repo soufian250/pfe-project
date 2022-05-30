@@ -35,6 +35,10 @@
     <link href="{{ asset('assets/vendor/jquery/jquery.modal.min.css') }}" rel="stylesheet">
 
 
+
+    <link href="{{ asset('assets/lib/Datepicker.js-master/dist/css/datepicker.material.css') }}" rel="stylesheet">
+
+
     {% block stylesheets %}
         {% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}"/>
@@ -352,6 +356,27 @@
                         </ul>
                     </li><!-- End Reservation Nav -->
 
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" data-bs-target="#blog-nav" data-bs-toggle="collapse" href="#">
+                            <i class="bi bi-menu-button-wide"></i><span>Blog </span><i class="bi bi-chevron-down ms-auto"></i>
+                        </a>
+                        <ul id="blog-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                            <li>
+                                <a href="{{ path('post_list') }}">
+                                    <i class="bi bi-sd-card"></i><span>List des articles</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('post_add') }}">
+                                    <i class="bi bi-sd-card"></i><span>Ajouter article</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li><!-- End Reservation Nav -->
+
 
                 </ul>
 
@@ -378,6 +403,10 @@
 
        <!-- jQuery Modal -->
        <script src="{{ asset('assets/vendor/jquery/jquery.modal.min.js') }}"></script>
+
+
+       <!-- Datepicker JS -->
+       <script src="{{ asset('assets/lib/Datepicker.js-master/dist/datepicker.js') }}"></script>
 
 
        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

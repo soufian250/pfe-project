@@ -10,7 +10,9 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    car_image_directory: '%kernel.project_dir%/web/uploads/recar/images'
+    car_image_directory: '%kernel.project_dir%/web/uploads/recar/car/images'
+    post_image_directory: '%kernel.project_dir%/web/uploads/recar/post/images'
+
 
 #liip_imagine:
 #    resolvers:
@@ -67,6 +69,7 @@ framework:
     fragments: ~
     http_method_override: true
     assets: ~
+
     php_errors:
         log: true
 
@@ -129,7 +132,10 @@ assetic:
             inputs:
                 - 'bundles/home/js/home.js'
             output: "js/hometemplate.js"
-
+        reservation_js:
+            inputs:
+                - 'bundles/project/js/reservation.js'
+            output: "js/reservationtemplate.js"
 
 # api_rest Configuration
 fos_rest:
