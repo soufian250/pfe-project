@@ -18,25 +18,6 @@ car_show:
     path: /car/show
     defaults: { _controller: ProjectBundle:Car:show }
 
-#home
-home:
-    path: /home
-    defaults: { _controller: ProjectBundle:Home:index }
-
-#vehicule
-store:
-    path: /store
-    defaults: { _controller: ProjectBundle:Home:store }
-
-#apropos
-about:
-    path: /apropos
-    defaults: { _controller: ProjectBundle:Home:about }
-
-#contact
-contact:
-    path: /contact
-    defaults: { _controller: ProjectBundle:Home:contact }
 car_edit:
     path: /car/edit/{id}
     defaults: { _controller: ProjectBundle:Car:edit }
