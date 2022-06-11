@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Post
 {
 
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime('now'));
+    }
+
 
     /**
      * @var integer
