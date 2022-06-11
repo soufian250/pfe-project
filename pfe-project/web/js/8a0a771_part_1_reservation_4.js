@@ -1,34 +1,46 @@
 
 $(document).ready(function(){
 
-    let custom = new Datepicker('#custom', {
 
-        min: (function(){
-            let date = new Date();
-            date.setDate(date.getDate() - 1);
-            return date;
-        })(),
-        format: 'yyyy/mm/dd',
-        formatSubmit: 'yyyy/mm/dd',
-        inline: true,
 
-        time: true,
-        classNames: {
-            node: 'datepicker custom'
-        },
+    $("#custom").flatpickr({
 
-        templates: {
-            container: [
-                '<div class="datepicker__container">',
-                '<% for (var i = 0; i <= 2; i++) { %>',
-                '<div class="datepicker__pane">',
-                '<%= renderHeader(i) %>',
-                '<%= renderCalendar(i) %>',
-                '</div>',
-                '<% } %>',
-                '</div>'
-            ].join('')
-        }
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        mode: "range",
+        minDate: "today",
+        onChange: function(selectedDates, dateStr, instance){
+
+            var from = selectedDates[0].getFullYear() + "-" + numeroAdosCaracteres(selectedDates[0].getMonth() + 1) + "-" + numeroAdosCaracteres(selectedDates[0].getDate());
+            var to = selectedDates[1].getFullYear() + "-" + numeroAdosCaracteres(selectedDates[1].getMonth() + 1) + "-" + numeroAdosCaracteres(selectedDates[1].getDate());
+
+
+
+            $.ajax({
+                url:"/apicar/reservation/add/date",
+                type:'GET',
+                data:{
+                    from: from,
+                    to: to
+                },
+                dataType:'json',
+                success:function(data){
+                    location.reload();
+                }
+            });
+
+            },
+
     });
+
+    function numeroAdosCaracteres( fecha ) {
+        if (fecha > 9){
+            return ""+fecha;
+        }else{
+            return "0"+fecha;
+        }
+    }
+
+
 
 })
