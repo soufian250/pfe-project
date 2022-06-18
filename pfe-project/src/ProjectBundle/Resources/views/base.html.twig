@@ -34,9 +34,7 @@
 
     <link href="{{ asset('assets/vendor/jquery/jquery.modal.min.css') }}" rel="stylesheet">
 
-
-
-    <link href="{{ asset('assets/lib/Datepicker.js-master/dist/css/datepicker.material.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 
     {% block stylesheets %}
@@ -406,13 +404,21 @@
 
 
        <!-- Datepicker JS -->
-       <script src="{{ asset('assets/lib/Datepicker.js-master/dist/datepicker.js') }}"></script>
+       <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
 
 
        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
        <!-- Template Main JS File -->
        <script src="{{ asset('assets/js/main.js') }}"></script>
+
+
+
+       <!-- Data tabel -->
+       <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
+
 
 
 

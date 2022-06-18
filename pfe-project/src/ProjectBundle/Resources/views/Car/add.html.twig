@@ -1,6 +1,8 @@
 {%extends '@Project/base.html.twig'%}
 
 
+{% form_theme form '@Project/Form/fields.html.twig' %}
+
 {% block  main %}
 
     <!-- ======= Main ======= -->
@@ -20,13 +22,9 @@
         <section class="section">
             <div class="row">
                 <div class="col-lg-10">
-
-
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Ajouter une voiture </h5>
-
-                            <!-- General Form Elements -->
 
                                 {{ form_start(form) }}
                                     {{ form_row(form.name) }}
@@ -37,21 +35,10 @@
                                     {{ form_row(form.fuel) }}
                                     {{ form_row(form.air_conditioner) }}
                                     {{ form_row(form.imageName) }}
+                                    {{ form_row(form.type) }}
                                     {{ form_row(form.save) }}
                                 {{ form_end(form) }}
 
-                        {#        <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Model</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Submit Form</button>
-                                </div>
-#}
-                           <!-- End General Form Elements -->
 
                         </div>
                     </div>

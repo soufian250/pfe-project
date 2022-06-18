@@ -136,6 +136,10 @@ assetic:
             inputs:
                 - 'bundles/project/js/reservation.js'
             output: "js/reservationtemplate.js"
+        post_js:
+            inputs:
+                - 'bundles/project/js/post.js'
+            output: "js/posttemplate.js"
 
 # api_rest Configuration
 fos_rest:

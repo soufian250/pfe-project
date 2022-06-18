@@ -26,6 +26,7 @@ ProjectBundle\Entity\Post:
         imageName:
             type: string
             length: 255
+            nullable: true
         body:
             type: text
             nullable: false

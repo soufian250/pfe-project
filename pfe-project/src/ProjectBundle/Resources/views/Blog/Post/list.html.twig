@@ -12,8 +12,25 @@
             </nav>
         </div><!-- End Page Title -->
 
+        <h1>List des articles</h1>
         <section class="section">
-            <h1>Section</h1>
+            <table class="table datatable">
+                <thead>
+                    <tr>
+                        <td>title</td>
+                        <td>body</td>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for post in posts  %}
+                    <tr>
+                        <td>{{ post.title }}</td>
+                        <td>{{ post.title }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
         </section>
 
     </main><!-- End #main -->

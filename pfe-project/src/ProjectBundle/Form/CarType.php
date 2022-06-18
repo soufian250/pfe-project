@@ -38,7 +38,7 @@ class CarType extends AbstractType
             ->add('type',EntityType::class,array(
                 'class'=>Type::class,
                 'choice_label'=>'name',
-                'required'=>false
+                'required'=>false,
 
             ))
             ->add('imageName', FileType::class, [

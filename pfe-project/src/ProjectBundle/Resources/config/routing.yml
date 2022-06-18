@@ -25,7 +25,7 @@ car_edit:
 
 #Reservation
 reservation_add:
-    path: /reservation/add
+    path: /reservation/add/test
     defaults: { _controller: ProjectBundle:Reservation:add }
 
 reservation_show:
