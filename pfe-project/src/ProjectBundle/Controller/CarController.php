@@ -45,10 +45,10 @@ class CarController extends Controller
 
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
 
             $imageName = $form->get('imageName')->getData();
+
             if ($imageName) {
                 $originalFilename = pathinfo($imageName->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
@@ -62,7 +62,7 @@ class CarController extends Controller
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
+
                 }
 
                 // updates the 'brochureFilename' property to store the PDF file name
@@ -95,6 +95,20 @@ class CarController extends Controller
         $em->remove($car);
         $em->flush();
         return $this->redirectToRoute('index_page');
+
+    }
+
+    public function detailAction(Request $request,$id)
+    {
+
+        $em=$this->getDoctrine()->getManager();
+
+        $car=$em->getRepository(Car::class)->find($id);
+
+        return $this->render('@Project/Car/detail.html.twig', [
+            'car' => $car,
+        ]);
+
 
     }
 

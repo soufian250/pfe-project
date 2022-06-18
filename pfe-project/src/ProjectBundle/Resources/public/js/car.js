@@ -3,6 +3,21 @@ $(document).ready(function(){
 })
 
 
+
+function onlyNumericValue(ele) {
+
+    $(ele).on("keypress", function (e) {
+        if (isNaN(this.value + '' + String.fromCharCode(e.charCode))) return false;
+    });
+    $(ele).on("paste", function (e) {
+        e.preventDefault();
+    });
+}
+
+onlyNumericValue('#car_seat');
+onlyNumericValue('#car_door');
+onlyNumericValue('#car_passenger');
+
 function deleteCar(idCar) {
 
     const swalWithBootstrapButtons = Swal.mixin({

@@ -320,4 +320,33 @@ class Car
     {
         return $this->fuel;
     }
+    /**
+     * @var \ProjectBundle\Entity\Type
+     */
+    private $type;
+
+
+    /**
+     * Set type
+     *
+     * @param \ProjectBundle\Entity\Type $type
+     *
+     * @return Car
+     */
+    public function setType(\ProjectBundle\Entity\Type $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \ProjectBundle\Entity\Type
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 }

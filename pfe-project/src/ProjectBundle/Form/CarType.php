@@ -28,13 +28,28 @@ class CarType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder ->add('matriclue', TextType::class)
-            ->add('name', TextType::class)
-            ->add('seat', TextType::class)
-            ->add('door', TextType::class)
-            ->add('transmission', TextType::class)
-            ->add('fuel', TextType::class)
+        $builder ->add('matriclue', TextType::class,[
+            'data'=>'JHUHSUHS'.rand(5,100)
+        ])
+            ->add('name', TextType::class,[
+                 'data' => 'Audi',
+            ])
+            ->add('seat', TextType::class,[
+                 'data' => 4,
+            ])
+            ->add('door', TextType::class,[
+                 'data' => 4,
+            ])
+            ->add('transmission', TextType::class,[
+                 'data' => 'Automatique',
+            ])
+            ->add('fuel', TextType::class,[
+                 'data' => 'Petrol',
+            ])
             ->add('air_conditioner', CheckboxType::class)
+            ->add('passenger', TextType::class,[
+                 'data' => 4,
+            ])
             ->add('type',EntityType::class,array(
                 'class'=>Type::class,
                 'choice_label'=>'name',

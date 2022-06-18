@@ -3,6 +3,21 @@ $(document).ready(function(){
 })
 
 
+
+function onlyNumericValue(ele) {
+
+    $(ele).on("keypress", function (e) {
+        if (isNaN(this.value + '' + String.fromCharCode(e.charCode))) return false;
+    });
+    $(ele).on("paste", function (e) {
+        e.preventDefault();
+    });
+}
+
+onlyNumericValue('#car_seat');
+onlyNumericValue('#car_door');
+onlyNumericValue('#car_passenger');
+
 function deleteCar(idCar) {
 
     const swalWithBootstrapButtons = Swal.mixin({
@@ -135,7 +150,12 @@ $(document).ready(function(){
             var from = selectedDates[0].getFullYear() + "-" + numeroAdosCaracteres(selectedDates[0].getMonth() + 1) + "-" + numeroAdosCaracteres(selectedDates[0].getDate());
             var to = selectedDates[1].getFullYear() + "-" + numeroAdosCaracteres(selectedDates[1].getMonth() + 1) + "-" + numeroAdosCaracteres(selectedDates[1].getDate());
 
+            //Calculate date here
+            var startDate = moment(from, "YYYY.MM.DD");
+            var endDate = moment(to, "YYYY.MM.DD");
 
+
+            let result = endDate.diff(startDate, 'days');
 
             $.ajax({
                 url:"/apicar/reservation/add/date",
