@@ -20,7 +20,6 @@ class ApiRestProjectController extends FOSRestController
     {
 
         $idCar = $request->query->get('idCar');
-        dump($idCar);die;
         $em=$this->getDoctrine()->getManager();
         $car=$em->getRepository(Car::class)->find($idCar);
         $em->remove($car);

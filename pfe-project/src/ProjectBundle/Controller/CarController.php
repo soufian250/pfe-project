@@ -2,20 +2,16 @@
 
 namespace ProjectBundle\Controller;
 
-use Doctrine\ORM\EntityManagerInterface;
 use ProjectBundle\Entity\Car;
 use ProjectBundle\Form\CarType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use ProjectBundle\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class CarController extends Controller
 {
-
 
 
     public function indexAction()
@@ -40,34 +36,19 @@ class CarController extends Controller
 
 
         $car = new Car();
-
         $form = $this->createForm(CarType::class,$car);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             $imageName = $form->get('imageName')->getData();
 
+            $fileUploaderService=$this->container->get('fileuploader.service');
+
+
             if ($imageName) {
-                $originalFilename = pathinfo($imageName->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
-               // $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-                $newFilename = $originalFilename.'-'.uniqid().'.'.$imageName->guessExtension();
-
-                // Move the file to the directory where brochures are stored
-                try {
-                    $imageName->move(
-                        $this->getParameter('car_image_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-
-                }
-
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
-                $car->setImageName($newFilename);
+                $imageFileName = $fileUploaderService->upload($imageName);
+                $car->setImageName($imageFileName);
             }
 
 
