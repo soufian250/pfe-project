@@ -1717,7 +1717,8 @@ h1, h2, h3, h4, h5,
   font-weight: 700; }
 
 .img-wrap-1 img {
-  /*max-width: 400px; */}
+  max-width: 400px;
+}
 
 .social li {
   display: inline-block; }
