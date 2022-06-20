@@ -1,8 +1,8 @@
 services:
-
-  fileuploader.service:
-    class: ProjectBundle\Service\FileUploader
-    arguments: [ '@service_container' ]
+#
+#  fileuploader.service:
+#    class: ProjectBundle\Service\FileUploader
+#    arguments: [ '@service_container' ]
 
     # --TWIG EXTENSION --
 #Car

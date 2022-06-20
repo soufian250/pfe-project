@@ -43,12 +43,24 @@ class CarController extends Controller
 
             $imageName = $form->get('imageName')->getData();
 
-            $fileUploaderService=$this->container->get('fileuploader.service');
+          //  $fileUploaderService=$this->container->get('fileuploader.service');
 
+            $originalFilename = pathinfo($imageName->getClientOriginalName(), PATHINFO_FILENAME);
+            // this is needed to safely include the file name as part of the URL
+            // $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
 
-            if ($imageName) {
-                $imageFileName = $fileUploaderService->upload($imageName);
-                $car->setImageName($imageFileName);
+            $newFilename = $originalFilename.'-'.uniqid().'.'.$imageName->guessExtension();
+
+            // Move the file to the directory where brochures are stored
+
+            try {
+
+                $imageName->move(
+                    $this->getParameter('car_image_directory'),
+                    $newFilename
+                );
+            } catch (FileException $e) {
+                // Handle Exceptions here
             }
 
 
