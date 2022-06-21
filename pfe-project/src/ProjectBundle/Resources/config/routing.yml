@@ -67,24 +67,3 @@ post_edit:
 post_list:
     path: /post/list
     defaults: { _controller: ProjectBundle:Blog:list }
-
-
-#home
-home:
-    path: /home
-    defaults: { _controller: ProjectBundle:Home:index }
-
-#vehicule
-store:
-    path: /store
-    defaults: { _controller: ProjectBundle:Home:store }
-
-#apropos
-about:
-    path: /apropos
-    defaults: { _controller: ProjectBundle:Home:about }
-
-#contact
-contact:
-    path: /contact
-    defaults: { _controller: ProjectBundle:Home:contact }
