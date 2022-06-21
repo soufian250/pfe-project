@@ -6,6 +6,7 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 use Knp\Component\Pager\PaginatorInterface;
 //use Nette\Application\Request;
 use ProjectBundle\Entity\Car;
+use ProjectBundle\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -86,4 +87,15 @@ class HomeController extends Controller
         return  $this->render('@Home/Home/contact.html.twig',['form' => $form->createView()]);
     }
 
+
+    /**
+     * @Route("/blog", name="blog")
+     */
+    public function blogAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $listePosts = $em->getRepository('ProjectBundle:Post')->findByPublished(1);
+        $posts  = $this->get('knp_paginator')->paginate($listePosts,$request->query->get('page', 1), 6);
+        return  $this->render('@Home/Home/blog.html.twig',['posts'=>$posts]);
+    }
 }
