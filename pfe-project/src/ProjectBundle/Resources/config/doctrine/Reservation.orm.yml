@@ -11,9 +11,14 @@ ProjectBundle\Entity\Reservation:
   fields:
     startDate:
       type: datetime
-      unique: true
     endDate:
       type: datetime
-      unique: true
+    startTime:
+      type: time
+    endTime:
+      type: time
+    daysNumber:
+      type: integer
+      length: 10
   lifecycleCallbacks: {  }
 
