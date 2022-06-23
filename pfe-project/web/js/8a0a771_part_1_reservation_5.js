@@ -1,8 +1,51 @@
 
+
 $(document).ready(function(){
 
+
+
+
+
     $('.reservation-validate').on('click',function () {
-        alert(44);
+
+
+        const str = $('#custom').val();
+
+        let from = str.split('to')[0];
+        let to = str.split('to')[1];
+
+        let startDate = moment(from, "YYYY.MM.DD");
+        let endDate = moment(to, "YYYY.MM.DD");
+        let daysNumber = endDate.diff(startDate, 'days');
+
+        daysNumber = daysNumber+1;
+        $('.daysNumber').val(daysNumber);
+
+        const startTime = $('#startTime').val();
+        const endTime   = $('#endTime').val();
+
+        console.log(startTime,endTime);
+
+        $.ajax({
+            url:"/apicar/reservation/add/date",
+            type:'GET',
+            data:{
+                from: from,
+                to: to,
+                daysNumber: daysNumber,
+                startTime,
+                endTime
+            },
+            dataType:'json',
+            success:function(data){
+                iziToast.error({
+                    title: 'success',
+                    message: 'Illegal operation',
+                });
+            }
+        });
+
+
     })
     $("#custom").flatpickr({
 
@@ -10,35 +53,6 @@ $(document).ready(function(){
         dateFormat: "Y-m-d",
         mode: "range",
         minDate: "today",
-        onChange: function(selectedDates, dateStr, instance){
-
-            let from = selectedDates[0].getFullYear() + "-" + numeroAdosCaracteres(selectedDates[0].getMonth() + 1) + "-" + numeroAdosCaracteres(selectedDates[0].getDate());
-            let to = selectedDates[1].getFullYear() + "-" + numeroAdosCaracteres(selectedDates[1].getMonth() + 1) + "-" + numeroAdosCaracteres(selectedDates[1].getDate());
-
-            //Calculate date here
-            let startDate = moment(from, "YYYY.MM.DD");
-            let endDate = moment(to, "YYYY.MM.DD");
-            let daysNumber = endDate.diff(startDate, 'days');
-
-            daysNumber = daysNumber+1;
-
-            $('.daysNumber').val(daysNumber);
-
-            console.log(daysNumber);
-            $.ajax({
-                url:"/apicar/reservation/add/date",
-                type:'GET',
-                data:{
-                    from: from,
-                    to: to,
-                    daysNumber: daysNumber
-                },
-                dataType:'json',
-                success:function(data){
-
-                }
-           });
-        },
 
     });
 

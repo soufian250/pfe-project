@@ -135,7 +135,12 @@ function slugifyInput(text) {
 }
 
 
+
 $(document).ready(function(){
+
+
+
+
 
     $('.reservation-validate').on('click',function () {
 
@@ -170,6 +175,10 @@ $(document).ready(function(){
             dataType:'json',
             success:function(data){
 
+                iziToast.success({
+                    title: 'OK',
+                    message: 'Réservation enregistrer avec success',
+                });
             }
         });
 

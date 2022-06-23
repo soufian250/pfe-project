@@ -36,6 +36,11 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
+    <link href="{{ asset('assets/lib/iziModal/iziModal.min.css') }}" rel="stylesheet" type="text/css" />
+
+
+   <link href="{{ asset('assets/lib/iziToast/dist/css/iziToast.css') }}" rel="stylesheet" type="text/css" />
+
 
     {% block stylesheets %}
         {% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
@@ -425,7 +430,11 @@
        <script src="{{ asset('assets/lib/Momentjs/moment.min.js') }}"></script>
 
 
+       <!-- IziModel -->
+       <script src="{{ asset('assets/lib/iziModal/iziModal.min.js') }}"></script>
 
+
+       <script src="{{ asset('assets/lib/iziToast/dist/js/iziToast.min.js') }}"></script>
 
 
 
