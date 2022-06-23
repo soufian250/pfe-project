@@ -20,5 +20,12 @@ ProjectBundle\Entity\Reservation:
     daysNumber:
       type: integer
       length: 10
+  manyToOne:
+    type:
+      targetEntity: ProjectBundle\Entity\Client
+      inversedBy: client
+      joinColumn:
+        name: client_id
+        referencedColumnName: id
   lifecycleCallbacks: {  }
 
