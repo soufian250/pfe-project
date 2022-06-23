@@ -63,10 +63,4 @@ ProjectBundle\Entity\Client:
             unique: false
             nullable: true
             precision: 0
-    oneToMany:
-        reservations:
-            targetEntity: ProjectBundle\Entity\Reservation
-            cascade: [ all ]
-            mappedBy: client
-            orphanRemoval: true
     lifecycleCallbacks: {  }

@@ -21,11 +21,9 @@ ProjectBundle\Entity\Reservation:
       type: integer
       length: 10
   manyToOne:
-    type:
+    client:
       targetEntity: ProjectBundle\Entity\Client
-      inversedBy: client
-      joinColumn:
-        name: client_id
-        referencedColumnName: id
+      cascade: { }
+      orphanRemoval: false
   lifecycleCallbacks: {  }
 
