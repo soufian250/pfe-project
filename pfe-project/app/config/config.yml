@@ -115,11 +115,25 @@ sensio_framework_extra:
         annotations: false
 
 assetic:
-    debug:          '%kernel.debug%'
+    debug: '%kernel.debug%'
     use_controller: false
     filters:
         cssrewrite: ~
     assets:
+#       START CSS     #
+        global_css:
+            inputs:
+                - 'bundles/project/css/GlobaleStyle/global.css'
+            output: "css/GlobalCSS.css"
+        reservation_css:
+            inputs:
+                - 'bundles/project/css/reservation.css'
+            output: "css/reservationtemplate.css"
+#       START JS     #
+        global_js:
+            inputs:
+                - 'bundles/project/js/GlobaleJs/global.js'
+            output: "js/GlobalJS.js"
         client_js:
             inputs:
                 - 'bundles/project/js/client.js'

@@ -2,12 +2,12 @@
 
 $(document).ready(function(){
 
-
-    $('.reservation-validate').on('click',function () {
+    $('#reservation_save').removeAttr("type");
+    $('#reservation_save').on('click',function (e) {
+        e.preventDefault();
 
 
         const str = $('#custom').val();
-
         let from = str.split('to')[0];
         let to = str.split('to')[1];
 
@@ -21,26 +21,33 @@ $(document).ready(function(){
         const startTime = $('#startTime').val();
         const endTime   = $('#endTime').val();
 
+        if(!checkEmtyField('endTime')){
 
-        $.ajax({
-            url:"/apicar/reservation/add/date",
-            type:'GET',
-            data:{
-                from: from,
-                to: to,
-                daysNumber: daysNumber,
-                startTime,
-                endTime
-            },
-            dataType:'json',
-            success:function(data){
+            addErrorBorder('endTime');
 
-                iziToast.success({
-                    title: 'OK',
-                    message: 'Réservation enregistrer avec success',
-                });
-            }
-        });
+        }else{
+            removeErrorBorder('endTime');
+
+            let selectedUser = $( "#reservation_client option:selected" ).val()
+
+            $.ajax({
+                url:"/apicar/reservation/add/date",
+                type:'GET',
+                data:{
+                    from: from,
+                    to: to,
+                    daysNumber: daysNumber,
+                    startTime,
+                    endTime,
+                    selectedUser: selectedUser
+                },
+                dataType:'json',
+                success:function(data){
+                    localStorage.setItem('add','reservation');
+                }
+            });
+
+        }
 
 
     })
@@ -67,7 +74,6 @@ $(document).ready(function(){
         }
 
     });
-
 
     $("#startTime").flatpickr({
 
@@ -98,6 +104,73 @@ $(document).ready(function(){
             return "0"+fecha;
         }
     }
+
+    function checkEmtyField(inputId) {
+
+        return $("#" + inputId).val().length > 0;
+
+    }
+
+    function addErrorBorder(inputId) {
+
+        $("#" + inputId).addClass("error");
+    }
+
+    function removeErrorBorder(inputId) {
+        $("#" + inputId).removeClass("error");
+    }
+
+    $( function () {
+
+        if (localStorage.getItem('add') == 'reservation'){
+            iziToast.success({
+                title: 'OK',
+                message: 'Réservation enregistrer avec success',
+            });
+        }
+        }
+    );
+
+
+    function deleteReservation(idReservation) {
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success m-3',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.ajax({
+                    url:"/apicar/reservation/delete",
+                    type:'GET',
+                    data:{
+                        idCar: idCar
+                    },
+                    dataType:'json',
+                    success:function(data){
+                        location.reload();
+                    }
+                });
+            }
+        })
+
+
+    }
+
+
 
 
 

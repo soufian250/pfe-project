@@ -15,7 +15,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="{{ asset('assets/lib/GoogleFonts/css') }}" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
 
@@ -34,7 +34,8 @@
 
     <link href="{{ asset('assets/vendor/jquery/jquery.modal.min.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <link href="{{ asset('assets/lib/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
 
     <link href="{{ asset('assets/lib/iziModal/iziModal.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -42,11 +43,19 @@
    <link href="{{ asset('assets/lib/iziToast/dist/css/iziToast.css') }}" rel="stylesheet" type="text/css" />
 
 
+
     {% block stylesheets %}
-        {% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
-            <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% stylesheets
+            '@reservation_css'
+            '@global_css'
+
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
     {% endblock %}
+
+
+
 
 
 </head>
@@ -335,6 +344,12 @@
                                 </a>
                             </li>
 
+                            <li>
+                                <a href="{{ path('reservation_show') }}">
+                                    <i class="bi bi-sd-card"></i><span>Afficher les reservations</span>
+                                </a>
+                            </li>
+
                         </ul>
                     </li><!-- End Reservation Nav -->
 
@@ -456,11 +471,14 @@
         {% endblock %}
 
        {% block javascripts %}
-           {% javascripts '@ProjectBundle/Resources/public/js/*' %}
+           {% javascripts '@ProjectBundle/Resources/public/js/*'
+                          '@ProjectBundle/Resources/public/js/GlobaleJs/*'
+           %}
                <script src="{{ asset_url }}"></script>
            {% endjavascripts %}
 
        {% endblock %}
+
 
     </body>
 

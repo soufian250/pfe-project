@@ -263,4 +263,101 @@ class Client
     {
         return $this->updatedAt;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $reservations;
+
+
+    /**
+     * Add reservation
+     *
+     * @param \ProjectBundle\Entity\Car $reservation
+     *
+     * @return Client
+     */
+    public function addReservation(\ProjectBundle\Entity\Car $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \ProjectBundle\Entity\Car $reservation
+     */
+    public function removeReservation(\ProjectBundle\Entity\Car $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+    /**
+     * @var boolean
+     */
+    private $statusReservation = false;
+
+    /**
+     * @var integer
+     */
+    private $reservationNumber = 0;
+
+
+    /**
+     * Set statusReservation
+     *
+     * @param boolean $statusReservation
+     *
+     * @return Client
+     */
+    public function setStatusReservation($statusReservation)
+    {
+        $this->statusReservation = $statusReservation;
+
+        return $this;
+    }
+
+    /**
+     * Get statusReservation
+     *
+     * @return boolean
+     */
+    public function getStatusReservation()
+    {
+        return $this->statusReservation;
+    }
+
+    /**
+     * Set reservationNumber
+     *
+     * @param integer $reservationNumber
+     *
+     * @return Client
+     */
+    public function setReservationNumber($reservationNumber)
+    {
+        $this->reservationNumber = $reservationNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get reservationNumber
+     *
+     * @return integer
+     */
+    public function getReservationNumber()
+    {
+        return $this->reservationNumber;
+    }
 }

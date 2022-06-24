@@ -11,18 +11,24 @@ ProjectBundle\Entity\Reservation:
   fields:
     startDate:
       type: datetime
+      nullable: true
     endDate:
       type: datetime
+      nullable: true
     startTime:
       type: time
+      nullable: true
     endTime:
       type: time
+      nullable: true
     daysNumber:
       type: integer
       length: 10
+      nullable: true
   manyToOne:
     client:
       targetEntity: ProjectBundle\Entity\Client
+      inversedBy: clients
       cascade: { }
       orphanRemoval: false
   lifecycleCallbacks: {  }

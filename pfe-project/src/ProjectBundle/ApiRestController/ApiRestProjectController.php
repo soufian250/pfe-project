@@ -61,17 +61,18 @@ class ApiRestProjectController extends FOSRestController
     public function addReservationAction(Request $request)
     {
 
+        $em=$this->getDoctrine()->getManager();
 
         $form = $request->query->get('from');
         $to = $request->query->get('to');
         $daysNumber = $request->query->get('daysNumber');
+        $formTime = $request->query->get('startTime');
+        $toTime = $request->query->get('endTime');
+        $selectedUser = $request->query->get('selectedUser');
+
 
         $dateFrom = new \DateTime($form);
         $dateTo = new \DateTime($to);
-
-
-        $formTime = $request->query->get('startTime');
-        $toTime = $request->query->get('endTime');
 
 
         $arrFrom = array_map('intval', explode(':', $formTime));
@@ -86,23 +87,47 @@ class ApiRestProjectController extends FOSRestController
         $test = new \DateTime($timeFrom);
         $test2 = new \DateTime($timeTo);
 
+        $client = $this->getDoctrine()->getRepository(Client::class)->find(intval($selectedUser));
 
-        $em=$this->getDoctrine()->getManager();
+        $client->setReservationNumber($client->getReservationNumber() + 1);
+
+        $client->setStatusReservation(true);
         $reservation = new Reservation();
         $reservation->setStartDate($dateFrom);
         $reservation->setEndDate($dateTo);
         $reservation->setStartTime($test);
         $reservation->setEndTime($test2);
+        $reservation->setClient($client);
         $reservation->setDaysNumber(intval($daysNumber));
-
 
         $em->persist($reservation);
         $em->flush();
 
-        $response = new Response(json_encode(['status'=>'OK']));
+        $response = new Response(json_encode(['status'=>'Add OK']));
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
     }
+
+    /**
+     * @Rest\Get("/reservation/delete")
+     */
+
+    public function deleteReservationAction(Request $request)
+    {
+
+        $idReservation = $request->query->get('idReservation');
+        $em=$this->getDoctrine()->getManager();
+        $reservation=$em->getRepository(Reservation::class)->find($idReservation);
+        $em->remove($reservation);
+        $em->flush();
+
+        $response = new Response(json_encode(['status'=>'Delete OK']));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+
 
 }

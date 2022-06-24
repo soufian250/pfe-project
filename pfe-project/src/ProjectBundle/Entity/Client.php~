@@ -263,4 +263,43 @@ class Client
     {
         return $this->updatedAt;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $reservations;
+
+
+    /**
+     * Add reservation
+     *
+     * @param \ProjectBundle\Entity\Car $reservation
+     *
+     * @return Client
+     */
+    public function addReservation(\ProjectBundle\Entity\Car $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \ProjectBundle\Entity\Car $reservation
+     */
+    public function removeReservation(\ProjectBundle\Entity\Car $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
 }

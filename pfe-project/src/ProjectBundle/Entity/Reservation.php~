@@ -167,4 +167,33 @@ class Reservation
     {
         return $this->endTime;
     }
+    /**
+     * @var \ProjectBundle\Entity\Client
+     */
+    private $client;
+
+
+    /**
+     * Set client
+     *
+     * @param \ProjectBundle\Entity\Client $client
+     *
+     * @return Reservation
+     */
+    public function setClient(\ProjectBundle\Entity\Client $client = null)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \ProjectBundle\Entity\Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
 }
