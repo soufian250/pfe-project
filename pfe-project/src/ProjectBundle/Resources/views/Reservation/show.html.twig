@@ -1,0 +1,63 @@
+{% extends '@Project/base.html.twig' %}
+
+
+{% block main %}
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Afficher les voitures</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">List des voitures</h5>
+                            <!-- Table with stripped rows -->
+                            <table class="table datatable">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Client</th>
+                                    <th scope="col">Date début</th>
+                                    <th scope="col">Date fin</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for reservation in reservations %}
+                                    <tr>
+
+                                        <td>{{ reservation.client.firstName | capitalize }}</td>
+                                        <td>{{ reservation.startDate |date("d/m/y") }}</td>
+                                        <td>{{ reservation.endDate |date("d/m/y") }}</td>
+                                        <td>
+                                            <a href="{{ path('reservation_edit',{'id':reservation.id }) }}"> <i color="orange" class="ri-mark-pen-line"> </i></a>
+                                            <a href="#" onclick="deleteReservation({{ reservation.id }})"> <i style="color: red" class="ri-delete-bin-3-line m-2"> </i></a>
+                                            <a href="{{ path('reservation_detail',{'id':reservation.id }) }}"> <i class="ri-information-line"> </i></a>
+                                        </td>
+                                    </tr>
+
+
+
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <!-- End Table with stripped rows -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+{% endblock %}

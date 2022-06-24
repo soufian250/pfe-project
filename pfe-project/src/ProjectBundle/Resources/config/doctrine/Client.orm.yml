@@ -49,6 +49,15 @@ ProjectBundle\Entity\Client:
             unique: true
             nullable: false
             precision: 0
+        statusReservation:
+            type: boolean
+            nullable: true
+            options:
+                default: false
+        reservationNumber:
+            type: integer
+            options:
+                default: 0
         createdAt:
             type: datetime
             scale: 0
@@ -63,4 +72,8 @@ ProjectBundle\Entity\Client:
             unique: false
             nullable: true
             precision: 0
+    oneToMany:
+        reservations:
+            targetEntity: ProjectBundle\Entity\Car
+            mappedBy: client
     lifecycleCallbacks: {  }

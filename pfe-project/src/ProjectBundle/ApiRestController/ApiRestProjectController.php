@@ -6,6 +6,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use ProjectBundle\Entity\Car;
 use ProjectBundle\Entity\Client;
+use ProjectBundle\Entity\Reservation;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -20,7 +21,6 @@ class ApiRestProjectController extends FOSRestController
     {
 
         $idCar = $request->query->get('idCar');
-        dump($idCar);die;
         $em=$this->getDoctrine()->getManager();
         $car=$em->getRepository(Car::class)->find($idCar);
         $em->remove($car);
@@ -41,7 +41,6 @@ class ApiRestProjectController extends FOSRestController
     {
 
         $idClient = $request->query->get('idClient');
-        dump($idClient);die;
 
         $em=$this->getDoctrine()->getManager();
         $client=$em->getRepository(Client::class)->find($idClient);
@@ -62,21 +61,73 @@ class ApiRestProjectController extends FOSRestController
     public function addReservationAction(Request $request)
     {
 
+        $em=$this->getDoctrine()->getManager();
 
         $form = $request->query->get('from');
         $to = $request->query->get('to');
+        $daysNumber = $request->query->get('daysNumber');
+        $formTime = $request->query->get('startTime');
+        $toTime = $request->query->get('endTime');
+        $selectedUser = $request->query->get('selectedUser');
 
-        dump($form,$to);die;
 
-        $em=$this->getDoctrine()->getManager();
-        $client=$em->getRepository(Client::class)->find($idClient);
-        $em->remove($client);
+        $dateFrom = new \DateTime($form);
+        $dateTo = new \DateTime($to);
+
+
+        $arrFrom = array_map('intval', explode(':', $formTime));
+        $time = mktime($arrFrom[0], $arrFrom[1], 1, date('m'), date('d'), date('Y'));
+
+        $arrTo = array_map('intval', explode(':', $toTime));
+        $time2 = mktime($arrTo[0], $arrTo[1], 1, date('m'), date('d'), date('Y'));
+
+        $timeFrom = date("m/d/Y h:i:s A T",$time);
+        $timeTo = date("m/d/Y h:i:s A T",$time2);
+
+        $test = new \DateTime($timeFrom);
+        $test2 = new \DateTime($timeTo);
+
+        $client = $this->getDoctrine()->getRepository(Client::class)->find(intval($selectedUser));
+
+        $client->setReservationNumber($client->getReservationNumber() + 1);
+
+        $client->setStatusReservation(true);
+        $reservation = new Reservation();
+        $reservation->setStartDate($dateFrom);
+        $reservation->setEndDate($dateTo);
+        $reservation->setStartTime($test);
+        $reservation->setEndTime($test2);
+        $reservation->setClient($client);
+        $reservation->setDaysNumber(intval($daysNumber));
+
+        $em->persist($reservation);
         $em->flush();
 
-        $response = new Response(json_encode(['status'=>'OK']));
+        $response = new Response(json_encode(['status'=>'Add OK']));
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
     }
+
+    /**
+     * @Rest\Get("/reservation/delete")
+     */
+
+    public function deleteReservationAction(Request $request)
+    {
+
+        $idReservation = $request->query->get('idReservation');
+        $em=$this->getDoctrine()->getManager();
+        $reservation=$em->getRepository(Reservation::class)->find($idReservation);
+        $em->remove($reservation);
+        $em->flush();
+
+        $response = new Response(json_encode(['status'=>'Delete OK']));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+
 
 }

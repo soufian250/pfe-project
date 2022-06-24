@@ -25,7 +25,14 @@ class ReservationController extends Controller
 
     public function showAction()
     {
-        return  $this->render('@Project/Reservation/show.html.twig');
+
+        $reservation = $this->getDoctrine()->getRepository(Reservation::class)->findAll();
+
+        return  $this->render('@Project/Reservation/show.html.twig',[
+            'reservations'=> $reservation
+
+            ]
+        );
     }
 
     public function addAction(Request $request)
@@ -33,9 +40,7 @@ class ReservationController extends Controller
 
 
         $reservation = new Reservation();
-
         $form = $this->createForm(ReservationType::class,$reservation);
-
         $form->handleRequest($request);
 
 
@@ -48,7 +53,7 @@ class ReservationController extends Controller
             $entityManager->persist($reservation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('index_page');
+            return $this->redirectToRoute('reservation_show');
 
         }
 
@@ -57,6 +62,18 @@ class ReservationController extends Controller
             'form' => $form->createView(),
         ]);
 
+
+    }
+
+    public function detailAction($id)
+    {
+        $em=$this->getDoctrine()->getManager();
+
+        $car=$em->getRepository(Reservation::class)->find($id);
+
+        return $this->render('@Project/Reservation/detail.html.twig', [
+            'car' => $car,
+        ]);
 
     }
 }

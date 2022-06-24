@@ -3,6 +3,9 @@
 namespace ProjectBundle\Form;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
+use ProjectBundle\Entity\Client;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -25,10 +28,18 @@ class ReservationType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder ->add('startDate', DateTimeType::class)
-        ->add('endDate', DateTimeType::class, [
-            'placeholder' => 'Select a value',
-        ])->add('save', SubmitType::class, ['label' => 'Valider']);
+        $builder
+            ->add('client',EntityType::class,array(
+                'class'=>Client::class,
+                'choice_label'=>'firstName',
+                'required'=>true,
+                'query_builder'=>function(EntityRepository $er){
+                    return $er->createQueryBuilder('c')
+                        ->Where('c.statusReservation = :statusReservation')
+                        ->setParameter('statusReservation',false);
+                }
+            ))
+            ->add('save', SubmitType::class, ['label' => 'Valider']);
 
     }
 

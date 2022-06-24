@@ -1,5 +1,6 @@
 {%extends '@Project/base.html.twig'%}
 
+{% form_theme form '@Project/Form/fields.html.twig' %}
 
 {% block  main %}
 
@@ -21,33 +22,52 @@
             <div class="row">
                 <div class="col-lg-10">
 
-
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Ajouter une reservation </h5>
 
 
-                            <div class="col-xl-8 col-lg-10 col-md-12 px-2">
-                                <input type="hidden"  id="custom">
+
+
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label"> Date</label>
+
+                                <div class="col-sm-6">
+                                    <input type="hidden" class="form-control"  id="custom">
+                                </div>
+                                <div class="col-2">
+                                    <input readonly class="form-control daysNumber"/>
+                                </div>
+                                <div class="col-2 mt-2">
+                                    <span>Jour(s)</span>
+                                </div>
                             </div>
 
-
-
-
-                            <!-- General Form Elements -->
-
-                        {#        <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Model</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control">
-                                    </div>
+                            <div class="row mt-3">
+                                <label for="inputText" class="col-sm-2 col-form-label"> Heur </label>
+                                <div class="col-2">
+                                    <input type="hidden" class="form-control"  id="startTime">
                                 </div>
 
-                                <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Submit Form</button>
+                                <div class="col-2 text-center mt-2">
+                                    <span>à</span>
                                 </div>
-#}
-                           <!-- End General Form Elements -->
+
+                                <div class="col-2">
+                                    <input type="hidden" class="form-control"  id="endTime">
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-6">
+
+                                    {{ form_start(form) }}
+                                        {{ form_row(form.client,{'attr':{'style':'margin-left: 62px'}})}}
+                                        {{ form_row(form.save) }}
+                                    {{ form_end(form) }}
+
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -59,6 +79,7 @@
         </section>
 
     </main><!-- End #main -->
+
 
 
 {% endblock %}

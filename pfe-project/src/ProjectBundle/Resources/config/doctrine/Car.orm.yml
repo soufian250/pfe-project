@@ -35,6 +35,9 @@ ProjectBundle\Entity\Car:
         fuel:
             type: string
             length: 255
+        passenger:
+            type: integer
+            length: 255
         updatedAt:
             type: datetime
             nullable: true

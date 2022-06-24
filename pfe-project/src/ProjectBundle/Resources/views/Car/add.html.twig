@@ -29,13 +29,14 @@
                                 {{ form_start(form) }}
                                     {{ form_row(form.name) }}
                                     {{ form_row(form.matriclue) }}
-                                    {{ form_row(form.seat) }}
+                                    {{ form_row(form.seat,{'attr':{ 'pattern' : "\\d+" }}) }}
                                     {{ form_row(form.door) }}
                                     {{ form_row(form.transmission) }}
                                     {{ form_row(form.fuel) }}
                                     {{ form_row(form.air_conditioner) }}
                                     {{ form_row(form.imageName) }}
                                     {{ form_row(form.type) }}
+                                    {{ form_row(form.passenger) }}
                                     {{ form_row(form.save) }}
                                 {{ form_end(form) }}
 

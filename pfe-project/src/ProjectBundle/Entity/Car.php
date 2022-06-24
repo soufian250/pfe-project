@@ -349,4 +349,33 @@ class Car
     {
         return $this->type;
     }
+    /**
+     * @var integer
+     */
+    private $passenger;
+
+
+    /**
+     * Set passenger
+     *
+     * @param integer $passenger
+     *
+     * @return Car
+     */
+    public function setPassenger($passenger)
+    {
+        $this->passenger = $passenger;
+
+        return $this;
+    }
+
+    /**
+     * Get passenger
+     *
+     * @return integer
+     */
+    public function getPassenger()
+    {
+        return $this->passenger;
+    }
 }

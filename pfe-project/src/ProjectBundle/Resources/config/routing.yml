@@ -22,6 +22,9 @@ car_edit:
     path: /car/edit/{id}
     defaults: { _controller: ProjectBundle:Car:edit }
 
+car_detail:
+    path: /car/detail/{id}
+    defaults: { _controller: ProjectBundle:Car:detail }
 
 #Reservation
 reservation_add:
@@ -31,6 +34,18 @@ reservation_add:
 reservation_show:
     path: /reservation/show
     defaults: { _controller: ProjectBundle:Reservation:show }
+
+
+reservation_edit:
+    path: /reservation/edit/{id}
+    defaults: { _controller: ProjectBundle:Car:edit }
+
+
+reservation_detail:
+    path: /reservation/detail/{id}
+    defaults: { _controller: ProjectBundle:Reservation:detail}
+
+
 
 
 #Client
