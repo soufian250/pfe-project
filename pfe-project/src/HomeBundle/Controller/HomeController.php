@@ -24,19 +24,17 @@ use HomeBundle\Entity\Contact;
 
 class HomeController extends Controller
 {
-    /**
-     * @Route("/home", name="home")
-     */
+
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
         $cars =$em->getRepository('ProjectBundle:Car')->createQueryBuilder('c')->setMaxResults(6)->getQuery()->getResult();
         return  $this->render('@Home/Home/index.html.twig' ,['cars'=>$cars]);
+
+
     }
 
-    /**
-     * @Route("/store", name="store")
-     */
+
     public function storeAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -45,17 +43,13 @@ class HomeController extends Controller
         return  $this->render('@Home/Home/store.html.twig',['cars'=>$cars]);
     }
 
-    /**
-     * @Route("/about", name="about")
-     */
+
     public function aboutAction()
     {
         return  $this->render('@Home/Home/about.html.twig');
     }
 
-    /**
-     * @Route("/contact", name="contact")
-     */
+
     public function contactAction(Request $request)
     {
         $contact = new Contact;     
@@ -97,9 +91,7 @@ class HomeController extends Controller
     }
 
 
-    /**
-     * @Route("/blog", name="blog")
-     */
+
     public function blogAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
