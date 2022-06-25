@@ -61,7 +61,7 @@
                             <div class="row mt-3">
                                 <div class="col-6">
 
-                                    {{ form_start(form) }}
+                                    {{form_start(form,{'attr':{'id':'form-reservation'}})}}
                                         {{ form_row(form.client,{'attr':{'style':'margin-left: 62px'}})}}
                                         {{ form_row(form.save) }}
                                     {{ form_end(form) }}

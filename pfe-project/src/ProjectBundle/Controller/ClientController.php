@@ -76,7 +76,7 @@ class ClientController extends Controller
             $entityManager->persist($client);
             $entityManager->flush();
 
-            return $this->redirectToRoute('client_show');
+            return $this->redirectToRoute('client_show',array('flash'=>'client'));
         }
 
 

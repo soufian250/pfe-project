@@ -143,6 +143,7 @@ $(document).ready(function(){
         e.preventDefault();
 
 
+
         const str = $('#custom').val();
         let from = str.split('to')[0];
         let to = str.split('to')[1];
@@ -179,12 +180,16 @@ $(document).ready(function(){
                 },
                 dataType:'json',
                 success:function(data){
-                    localStorage.setItem('add','reservation');
+
+                    // TODO: Change this hard coded link later
+                     window.location.href = 'http://127.0.0.1:8001/reservation/show?flash=reservation';
                 }
             });
 
-        }
 
+
+
+        }
 
     })
     $("#custom").flatpickr({
@@ -258,14 +263,24 @@ $(document).ready(function(){
 
     $( function () {
 
-        if (localStorage.getItem('add') == 'reservation'){
+        let link = window.location.href.split("?")[1];
+        console.log(link);
+
+        let after_ = link.substring(link.indexOf('=') + 1);
+        let linkToCheck = "flash="+after_;
+
+        if (link === linkToCheck){
+
+
             iziToast.success({
-                title: 'OK',
-                message: 'Réservation enregistrer avec success',
+                title: 'Ajoute success',
+                message: after_+' enregistrer avec success',
             });
+            let newLink = window.location.href.split("?")[0];
+            window.history.pushState("", "", newLink);
         }
-        }
-    );
+
+    });
 
 
     function deleteReservation(idReservation) {

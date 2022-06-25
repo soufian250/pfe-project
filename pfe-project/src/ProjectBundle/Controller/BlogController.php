@@ -69,7 +69,7 @@ class BlogController extends Controller
             $entityManager->persist($post);
             $entityManager->flush();
 
-            return $this->redirectToRoute('post_list');
+            return $this->redirectToRoute('post_list',['flash'=>'Post']);
         }
 
 

@@ -62,7 +62,18 @@ class CarType extends AbstractType
                 'required' => false,
                 'attr'=>[
                     'class'=>'form-control mb-2'
-                ]
+                ],
+                'constraints' => [
+                    new File([
+                        'maxSize' => "5M",
+                        'mimeTypes' => [
+                            "image/jpeg",
+                            "image/jpg",
+                            "image/png",
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                    ])
+                ],
             ])
             ->add('save', SubmitType::class, ['label' => 'Valider']);
     }

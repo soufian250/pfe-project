@@ -53,7 +53,7 @@ class ReservationController extends Controller
             $entityManager->persist($reservation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('reservation_show');
+            return $this->redirectToRoute('reservation_show',array('flash'=>'Reservation'));
 
         }
 
