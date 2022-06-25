@@ -22,6 +22,9 @@
         <link href="{{ asset('assets/css/front/fonts/flaticon/font/flaticon.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/css/front/style.css') }}" rel="stylesheet">
 
+        <!-- iziToast Notif-->
+        <link href="{{ asset('assets/lib/iziToast/dist/css/iziToast.css') }}" rel="stylesheet" type="text/css" />
+
     </head>
 
     <body>
@@ -134,6 +137,20 @@
         <script src="{{ asset('assets/css/front/js/bootstrap-datepicker.min.js') }}"></script>
         <script src="{{ asset('assets/css/front/js/aos.js') }}"></script>
         <script src="{{ asset('assets/css/front/js/main.js') }}"></script>
+
+        <!-- iziToast -->
+        <script src="{{ asset('assets/lib/iziToast/dist/js/iziToast.min.js') }}"></script>
+
+
+                {% block javascripts %}
+            {% javascripts '@ProjectBundle/Resources/public/js/*'
+                '@ProjectBundle/Resources/public/js/GlobaleJs/*'
+                '@HomeBundle/Resources/public/js/*'
+            %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+
+        {% endblock %}
     </body>
 
 </html>

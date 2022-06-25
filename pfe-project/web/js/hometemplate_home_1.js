@@ -1,42 +1,25 @@
 $(document).ready(function () {
 
-    var custom = new Datepicker('#custom', {
 
-        min: (function(){
-            let date = new Date();
-            date.setDate(date.getDate() - 1);
-            return date;
-        })(),
-        format: 'yyyy/mm/dd',
-        formatSubmit: 'yyyy/mm/dd',
-        inline: true,
-        ranged: true,
-        time: true,
-        classNames: {
-            node: 'datepicker custom'
-        },
+    $( function () {
 
-        templates: {
-            container: [
-                '<div class="datepicker__container">',
-                '<% for (var i = 0; i <= 2; i++) { %>',
-                '<div class="datepicker__pane">',
-                '<%= renderHeader(i) %>',
-                '<%= renderCalendar(i) %>',
-                '</div>',
-                '<% } %>',
-                '</div>'
-            ].join('')
+        let link = window.location.href.split("?")[1];
+        let after_ = link.substring(link.indexOf('=') + 1);
+        let linkToCheck = "flash="+after_;
+
+        if (link === linkToCheck){
+
+            console.log(after_);
+            after_ = after_.replace(/\//g, ' ');
+            console.log(after_);
+
+            iziToast.success({
+                title: 'Ajoute success',
+                message: after_,
+            });
+            let newLink = window.location.href.split("?")[0];
+            window.history.pushState("", "", newLink);
         }
+
     });
-
-
-    $(".dateTim").focus(function(){
-       $('.custom ').slideDown();
-    });
-
-    $(".dateTim").focusout(function(){
-       $('.custom ').slideUp();
-    });
-
 })

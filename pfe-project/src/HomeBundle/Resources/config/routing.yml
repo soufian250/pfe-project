@@ -27,3 +27,8 @@ contact:
     path: /contact
     defaults: { _controller: HomeBundle:Home:contact }
 
+#blog
+blog:
+    path: /blog
+    defaults: { _controller: HomeBundle:Home:blog }
+

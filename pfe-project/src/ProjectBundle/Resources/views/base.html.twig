@@ -39,7 +39,7 @@
 
     <link href="{{ asset('assets/lib/iziModal/iziModal.min.css') }}" rel="stylesheet" type="text/css" />
 
-
+    <!-- iziToast Notif-->
    <link href="{{ asset('assets/lib/iziToast/dist/css/iziToast.css') }}" rel="stylesheet" type="text/css" />
 
 
@@ -95,71 +95,39 @@
 
                                 <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                                     <i class="bi bi-bell"></i>
-                                    <span class="badge bg-primary badge-number">4</span>
+                                    <span class="badge bg-primary badge-number">{{ notification() }}</span>
                                 </a><!-- End Notification Icon -->
 
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                                     <li class="dropdown-header">
-                                        You have 4 new notifications
-                                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                                        Vous avez {{ notification() }} nouvelles notifications
+                                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Voir tout</span></a>
                                     </li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
 
-                                    <li class="notification-item">
-                                        <i class="bi bi-exclamation-circle text-warning"></i>
-                                        <div>
-                                            <h4>Lorem Ipsum</h4>
-                                            <p>Quae dolorem earum veritatis oditseno</p>
-                                            <p>30 min. ago</p>
-                                        </div>
-                                    </li>
+                                    {#  LIST OF NOTIFICATION #}
+                                    {% for notification in MessageNotification() %}
+                                        <li class="notification-item">
+                                            <i class="bi bi-info-circle text-primary"></i>
+                                            <div>
+                                                <h4>{{ notification.subject }}</h4>
+                                                <p>{{ notification.message }}</p>
+                                                <p>{{  notification.createdAt|date('d-m-Y H:m') }} </p>
+                                            </div>
+                                        </li>
 
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-
-                                    <li class="notification-item">
-                                        <i class="bi bi-x-circle text-danger"></i>
-                                        <div>
-                                            <h4>Atque rerum nesciunt</h4>
-                                            <p>Quae dolorem earum veritatis oditseno</p>
-                                            <p>1 hr. ago</p>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-
-                                    <li class="notification-item">
-                                        <i class="bi bi-check-circle text-success"></i>
-                                        <div>
-                                            <h4>Sit rerum fuga</h4>
-                                            <p>Quae dolorem earum veritatis oditseno</p>
-                                            <p>2 hrs. ago</p>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-
-                                    <li class="notification-item">
-                                        <i class="bi bi-info-circle text-primary"></i>
-                                        <div>
-                                            <h4>Dicta reprehenderit</h4>
-                                            <p>Quae dolorem earum veritatis oditseno</p>
-                                            <p>4 hrs. ago</p>
-                                        </div>
-                                    </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                    {% endfor %}
 
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li class="dropdown-footer">
-                                        <a href="#">Show all notifications</a>
+                                        <a href="#">Afficher toutes les notifications</a>
                                     </li>
 
                                 </ul><!-- End Notification Dropdown Items -->
@@ -448,7 +416,7 @@
        <!-- IziModel -->
        <script src="{{ asset('assets/lib/iziModal/iziModal.min.js') }}"></script>
 
-
+       <!-- iziToast -->
        <script src="{{ asset('assets/lib/iziToast/dist/js/iziToast.min.js') }}"></script>
 
 
@@ -473,6 +441,7 @@
        {% block javascripts %}
            {% javascripts '@ProjectBundle/Resources/public/js/*'
                           '@ProjectBundle/Resources/public/js/GlobaleJs/*'
+                          '@HomeBundle/Resources/public/js/*'
            %}
                <script src="{{ asset_url }}"></script>
            {% endjavascripts %}

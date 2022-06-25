@@ -1,6 +1,12 @@
 services:
 
     # --TWIG EXTENSION --
+
+    global.twig_extension.global:
+      class: ProjectBundle\Twig\GlobalExtension
+      arguments: [ "@doctrine.orm.default_entity_manager" ]
+      tags:
+        - { name: twig.extension }
 #Car
     car.twig_extension.carextension:
       class: ProjectBundle\Twig\CarExtension
