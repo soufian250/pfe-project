@@ -128,7 +128,7 @@ $(document).ready(function(){
     $( function () {
 
         let link = window.location.href.split("?")[1];
-        console.log(link);
+
 
         let after_ = link.substring(link.indexOf('=') + 1);
         let linkToCheck = "flash="+after_;

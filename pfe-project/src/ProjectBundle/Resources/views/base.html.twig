@@ -39,7 +39,7 @@
 
     <link href="{{ asset('assets/lib/iziModal/iziModal.min.css') }}" rel="stylesheet" type="text/css" />
 
-
+    <!-- iziToast Notif-->
    <link href="{{ asset('assets/lib/iziToast/dist/css/iziToast.css') }}" rel="stylesheet" type="text/css" />
 
 
@@ -101,7 +101,7 @@
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                                     <li class="dropdown-header">
                                         Vous avez {{ notification() }} nouvelles notifications
-                                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Voir tout</span></a>
                                     </li>
                                     <li>
                                         <hr class="dropdown-divider">
@@ -127,7 +127,7 @@
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li class="dropdown-footer">
-                                        <a href="#">Show all notifications</a>
+                                        <a href="#">Afficher toutes les notifications</a>
                                     </li>
 
                                 </ul><!-- End Notification Dropdown Items -->
@@ -416,7 +416,7 @@
        <!-- IziModel -->
        <script src="{{ asset('assets/lib/iziModal/iziModal.min.js') }}"></script>
 
-
+       <!-- iziToast -->
        <script src="{{ asset('assets/lib/iziToast/dist/js/iziToast.min.js') }}"></script>
 
 
@@ -441,6 +441,7 @@
        {% block javascripts %}
            {% javascripts '@ProjectBundle/Resources/public/js/*'
                           '@ProjectBundle/Resources/public/js/GlobaleJs/*'
+                          '@HomeBundle/Resources/public/js/*'
            %}
                <script src="{{ asset_url }}"></script>
            {% endjavascripts %}
