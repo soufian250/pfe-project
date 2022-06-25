@@ -25,11 +25,21 @@ class ClientType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
-            ->add('email', TextType::class)
-            ->add('cin', TextType::class)
-            ->add('phoneNumber', TextType::class)
+        $builder->add('firstName', TextType::class,[
+            'data'=>'Test'.rand(0,100)
+        ])
+            ->add('lastName', TextType::class,[
+                'data'=>'Test'.rand(0,100)
+            ])
+            ->add('email', TextType::class,[
+                'data'=>'Test'.rand(0,100).'@gmail.com'
+            ])
+            ->add('cin', TextType::class,[
+                'data'=>'EE22'.rand(0,100)
+            ])
+            ->add('phoneNumber', TextType::class,[
+                'data'=>'076655'.rand(0,200).rand(0,100)
+            ])
             ->add('save', SubmitType::class, ['label' => 'Valider']);
     }
 

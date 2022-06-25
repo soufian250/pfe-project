@@ -1,8 +1,4 @@
 services:
-#
-#  fileuploader.service:
-#    class: ProjectBundle\Service\FileUploader
-#    arguments: [ '@service_container' ]
 
     # --TWIG EXTENSION --
 #Car
@@ -15,6 +11,13 @@ services:
 #Client
     client.twig_extension.clientxtension:
       class: ProjectBundle\Twig\ClientExtension
+      arguments: ["@doctrine.orm.default_entity_manager"]
+      tags:
+        - { name: twig.extension }
+
+  #Reservation
+    reservation.twig_extension.reservationextension:
+      class: ProjectBundle\Twig\ReservationExtension
       arguments: ["@doctrine.orm.default_entity_manager"]
       tags:
         - { name: twig.extension }

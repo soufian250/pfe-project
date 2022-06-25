@@ -4,6 +4,11 @@ parameters:
     #parameter_name: value
 
 services:
+    project.event_listener.global:
+        class: ProjectBundle\EventListener\GlobalListener
+        tags:
+            - { name: 'doctrine.event_subscriber' }
+
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services

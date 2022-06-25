@@ -63,15 +63,16 @@ class CarController extends Controller
                 // Handle Exceptions here
             }
 
-
+            $car->setImageName($newFilename);
             $car = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($car);
             $entityManager->flush();
 
-            return $this->redirectToRoute('car_show');
+            return $this->redirectToRoute('car_show',array('flash'=>'Voiture'));
         }
+
 
 
         return $this->render('@Project/Car/add.html.twig', [

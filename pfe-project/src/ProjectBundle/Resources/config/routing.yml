@@ -54,7 +54,11 @@ client_add:
     defaults: { _controller: ProjectBundle:Client:add }
 
 client_show:
-    path: /client/show
+    path: /client/show/{add}
+    defaults: { _controller: ProjectBundle:Client:show, add: 1 }
+
+client_show_add:
+    path: /client/show/add
     defaults: { _controller: ProjectBundle:Client:show }
 
 

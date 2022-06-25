@@ -103,7 +103,7 @@ class ApiRestProjectController extends FOSRestController
         $em->persist($reservation);
         $em->flush();
 
-        $response = new Response(json_encode(['status'=>'Add OK']));
+        $response = new Response(json_encode(['link'=> 'ok']));
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
