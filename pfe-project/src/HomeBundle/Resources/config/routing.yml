@@ -32,3 +32,7 @@ blog:
     path: /blog
     defaults: { _controller: HomeBundle:Home:blog }
 
+#singleblog
+singleBlog:
+    path: /blog/{id}
+    defaults: { _controller: HomeBundle:Home:singleBlog }
