@@ -38,6 +38,11 @@ ProjectBundle\Entity\Car:
         passenger:
             type: integer
             length: 255
+        statusReservation:
+            type: boolean
+            nullable: true
+            options:
+                default: false
         updatedAt:
             type: datetime
             nullable: true

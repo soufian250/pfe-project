@@ -378,4 +378,33 @@ class Car
     {
         return $this->passenger;
     }
+    /**
+     * @var boolean
+     */
+    private $statusReservation = false;
+
+
+    /**
+     * Set statusReservation
+     *
+     * @param boolean $statusReservation
+     *
+     * @return Car
+     */
+    public function setStatusReservation($statusReservation)
+    {
+        $this->statusReservation = $statusReservation;
+
+        return $this;
+    }
+
+    /**
+     * Get statusReservation
+     *
+     * @return boolean
+     */
+    public function getStatusReservation()
+    {
+        return $this->statusReservation;
+    }
 }

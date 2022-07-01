@@ -129,5 +129,38 @@ class ApiRestProjectController extends FOSRestController
     }
 
 
+    /**
+     * @Rest\GET("/home/search")
+     */
+
+    public function searchAction(Request $request)
+    {
+
+
+        $em=$this->getDoctrine()->getManager();
+
+        $form = $request->query->get('from');
+        $to = $request->query->get('to');
+
+
+        $dateFrom = new \DateTime($form);
+        $dateTo = new \DateTime($to);
+
+
+        $cars = $em->getRepository(Car::class)
+                ->createQueryBuilder('c')
+                ->where('c.statusReservation = :statusReservation')
+                ->setParameter('statusReservation',false)
+                ->getQuery()->getResult();
+
+
+        $response=$this->render('@Home/Home/index.html.twig',[ "cars"=>$cars]);
+        $response->headers->set('Content-Type', 'text/html');
+
+        return $response;
+
+    }
+
+
 
 }
