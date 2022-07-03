@@ -263,4 +263,8 @@ class Post
     {
         return $this->createdAt;
     }
+
+    public function getThisClass() {
+        return Post::class;
+    }
 }

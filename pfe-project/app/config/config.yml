@@ -50,6 +50,7 @@ parameters:
 framework:
     templating:
         engines: [ 'twig' ]
+    translator: { fallbacks: [en] }
     #esi: ~
     #translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'

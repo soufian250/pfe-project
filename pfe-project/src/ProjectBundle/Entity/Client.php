@@ -15,16 +15,66 @@ class Client
         $this->createdAt = new \DateTime();
     }
 
+
     /**
      * @var integer
      */
     private $id;
 
-
     /**
      * @var string
      */
     private $firstName;
+
+    /**
+     * @var string
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     */
+    private $salt;
+
+    /**
+     * @var string
+     */
+    private $email;
+
+    /**
+     * @var string
+     */
+    private $cin;
+
+    /**
+     * @var string
+     */
+    private $phoneNumber;
+
+    /**
+     * @var boolean
+     */
+    private $statusReservation = false;
+
+    /**
+     * @var integer
+     */
+    private $reservationNumber = 0;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $reservations;
 
 
     /**
@@ -60,41 +110,6 @@ class Client
     {
         return $this->firstName;
     }
-    /**
-     * @var string
-     */
-    private $lastName;
-
-    /**
-     * @var string
-     */
-    private $salt;
-
-    /**
-     * @var string
-     */
-    private $email;
-
-    /**
-     * @var string
-     */
-    private $cin;
-
-    /**
-     * @var string
-     */
-    private $phoneNumber;
-
-    /**
-     * @var \DateTime
-     */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     */
-    private $updatedAt;
-
 
     /**
      * Set lastName
@@ -217,6 +232,54 @@ class Client
     }
 
     /**
+     * Set statusReservation
+     *
+     * @param boolean $statusReservation
+     *
+     * @return Client
+     */
+    public function setStatusReservation($statusReservation)
+    {
+        $this->statusReservation = $statusReservation;
+
+        return $this;
+    }
+
+    /**
+     * Get statusReservation
+     *
+     * @return boolean
+     */
+    public function getStatusReservation()
+    {
+        return $this->statusReservation;
+    }
+
+    /**
+     * Set reservationNumber
+     *
+     * @param integer $reservationNumber
+     *
+     * @return Client
+     */
+    public function setReservationNumber($reservationNumber)
+    {
+        $this->reservationNumber = $reservationNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get reservationNumber
+     *
+     * @return integer
+     */
+    public function getReservationNumber()
+    {
+        return $this->reservationNumber;
+    }
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -263,20 +326,15 @@ class Client
     {
         return $this->updatedAt;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $reservations;
-
 
     /**
      * Add reservation
      *
-     * @param \ProjectBundle\Entity\Car $reservation
+     * @param \ProjectBundle\Entity\Client $reservation
      *
      * @return Client
      */
-    public function addReservation(\ProjectBundle\Entity\Car $reservation)
+    public function addReservation(\ProjectBundle\Entity\Client $reservation)
     {
         $this->reservations[] = $reservation;
 
@@ -286,9 +344,9 @@ class Client
     /**
      * Remove reservation
      *
-     * @param \ProjectBundle\Entity\Car $reservation
+     * @param \ProjectBundle\Entity\Client $reservation
      */
-    public function removeReservation(\ProjectBundle\Entity\Car $reservation)
+    public function removeReservation(\ProjectBundle\Entity\Client $reservation)
     {
         $this->reservations->removeElement($reservation);
     }
@@ -302,62 +360,8 @@ class Client
     {
         return $this->reservations;
     }
-    /**
-     * @var boolean
-     */
-    private $statusReservation = false;
 
-    /**
-     * @var integer
-     */
-    private $reservationNumber = 0;
-
-
-    /**
-     * Set statusReservation
-     *
-     * @param boolean $statusReservation
-     *
-     * @return Client
-     */
-    public function setStatusReservation($statusReservation)
-    {
-        $this->statusReservation = $statusReservation;
-
-        return $this;
-    }
-
-    /**
-     * Get statusReservation
-     *
-     * @return boolean
-     */
-    public function getStatusReservation()
-    {
-        return $this->statusReservation;
-    }
-
-    /**
-     * Set reservationNumber
-     *
-     * @param integer $reservationNumber
-     *
-     * @return Client
-     */
-    public function setReservationNumber($reservationNumber)
-    {
-        $this->reservationNumber = $reservationNumber;
-
-        return $this;
-    }
-
-    /**
-     * Get reservationNumber
-     *
-     * @return integer
-     */
-    public function getReservationNumber()
-    {
-        return $this->reservationNumber;
+    public function getThisClass() {
+        return Client::class;
     }
 }

@@ -49,6 +49,12 @@ class HomeController extends Controller
         return  $this->render('@Home/Home/about.html.twig');
     }
 
+    public function CarDetailAction()
+    {
+        return  $this->render('@Home/Home/detail_car.html.twig');
+    }
+
+
 
     public function contactAction(Request $request)
     {

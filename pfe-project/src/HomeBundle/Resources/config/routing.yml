@@ -21,6 +21,9 @@ store:
 about:
     path: /apropos
     defaults: { _controller: HomeBundle:Home:about }
+cardetail:
+    path: /car_detail
+    defaults: { _controller: HomeBundle:Home:CarDetail }
 
 #contact
 contact:
@@ -31,4 +34,8 @@ contact:
 blog:
     path: /blog
     defaults: { _controller: HomeBundle:Home:blog }
+
+car_detail:
+    path: /cardetail
+    defaults: { _controller: HomeBundle:Home:carDetailHome }
 

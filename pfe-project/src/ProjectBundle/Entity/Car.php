@@ -407,4 +407,76 @@ class Car
     {
         return $this->statusReservation;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $reservations;
+
+
+    /**
+     * Add reservation
+     *
+     * @param \ProjectBundle\Entity\Car $reservation
+     *
+     * @return Car
+     */
+    public function addReservation(\ProjectBundle\Entity\Car $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \ProjectBundle\Entity\Car $reservation
+     */
+    public function removeReservation(\ProjectBundle\Entity\Car $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $insurance_date;
+
+
+    /**
+     * Set insuranceDate
+     *
+     * @param \DateTime $insuranceDate
+     *
+     * @return Car
+     */
+    public function setInsuranceDate($insuranceDate)
+    {
+        $this->insurance_date = $insuranceDate;
+
+        return $this;
+    }
+
+    /**
+     * Get insuranceDate
+     *
+     * @return \DateTime
+     */
+    public function getInsuranceDate()
+    {
+        return $this->insurance_date;
+    }
+
+    public function getThisClass() {
+        return Car::class;
+    }
 }
