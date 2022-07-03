@@ -83,3 +83,9 @@ post_edit:
 post_list:
     path: /post/list
     defaults: { _controller: ProjectBundle:Blog:list }
+
+
+#User
+user_profile:
+    path: /user/profile
+    defaults: { _controller: ProjectBundle:Default:userProfile }

@@ -129,19 +129,21 @@ $(document).ready(function(){
 
         let link = window.location.href.split("?")[1];
 
+        if (link !== undefined){
 
-        let after_ = link.substring(link.indexOf('=') + 1);
-        let linkToCheck = "flash="+after_;
+            let after_ = link.substring(link.indexOf('=') + 1);
+            let linkToCheck = "flash="+after_;
 
-        if (link === linkToCheck){
+            if (link === linkToCheck){
 
 
-            iziToast.success({
-                title: 'Ajoute success',
-                message: after_+' enregistrer avec success',
-            });
-            let newLink = window.location.href.split("?")[0];
-            window.history.pushState("", "", newLink);
+                iziToast.success({
+                    title: 'Ajoute success',
+                    message: after_+' enregistrer avec success',
+                });
+                let newLink = window.location.href.split("?")[0];
+                window.history.pushState("", "", newLink);
+            }
         }
 
     });
@@ -184,9 +186,5 @@ $(document).ready(function(){
 
 
     }
-
-
-
-
 
 })

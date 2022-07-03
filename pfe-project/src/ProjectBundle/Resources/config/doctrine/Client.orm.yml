@@ -74,6 +74,6 @@ ProjectBundle\Entity\Client:
             precision: 0
     oneToMany:
         reservations:
-            targetEntity: ProjectBundle\Entity\Car
+            targetEntity: ProjectBundle\Entity\Client
             mappedBy: client
     lifecycleCallbacks: {  }

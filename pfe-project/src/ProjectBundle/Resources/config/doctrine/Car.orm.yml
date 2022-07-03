@@ -38,6 +38,14 @@ ProjectBundle\Entity\Car:
         passenger:
             type: integer
             length: 255
+        statusReservation:
+            type: boolean
+            nullable: true
+            options:
+                default: false
+        insurance_date :
+            type: datetime
+            nullable: true
         updatedAt:
             type: datetime
             nullable: true
@@ -51,4 +59,8 @@ ProjectBundle\Entity\Car:
             joinColumn:
                 name: type_id
                 referencedColumnName: id
+    oneToMany:
+        reservations:
+            targetEntity: ProjectBundle\Entity\Car
+            mappedBy: car
     lifecycleCallbacks: {  }

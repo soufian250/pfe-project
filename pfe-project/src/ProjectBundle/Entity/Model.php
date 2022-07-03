@@ -51,5 +51,9 @@ class Model
     {
         return $this->name;
     }
+
+    public function getThisClass() {
+        return Model::class;
+    }
 }
 

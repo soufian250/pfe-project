@@ -4,6 +4,7 @@ namespace ProjectBundle\Twig;
 
 use Doctrine\ORM\EntityManager;
 use HomeBundle\Entity\Contact;
+use ProjectBundle\Entity\AuditLog;
 use ProjectBundle\Entity\Car;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
@@ -31,6 +32,7 @@ class GlobalExtension extends \Twig_Extension
         return array(
             new \Twig_SimpleFunction('notification', array($this, 'notification')),
             new \Twig_SimpleFunction('MessageNotification', array($this, 'MessageNotification')),
+            new \Twig_SimpleFunction('AuditLog', array($this, 'AuditLog')),
         );
     }
 
@@ -59,6 +61,18 @@ class GlobalExtension extends \Twig_Extension
             ->getQuery()->getResult();
 
         return $contact;
+    }
+
+
+  public function AuditLog()
+    {
+
+        $auditLog = $this->em->getRepository(AuditLog::class)->createQueryBuilder('a')
+            ->orderBy('a.dateActivity','desc')
+            ->setMaxResults(4)
+            ->getQuery()->getResult();
+
+        return $auditLog;
     }
 
 }

@@ -99,4 +99,8 @@ class Type
     {
         return $this->cars;
     }
+
+    public function getThisClass() {
+        return Type::class;
+    }
 }

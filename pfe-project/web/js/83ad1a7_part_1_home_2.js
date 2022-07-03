@@ -27,6 +27,7 @@ $(document).ready(function () {
             let to = selectedDates[1].getFullYear() + "-" + numeroAdosCaracteres(selectedDates[1].getMonth() + 1) + "-" + numeroAdosCaracteres(selectedDates[1].getDate());
 
 
+
             //Calculate date here
             let startDate = moment(from, "YYYY.MM.DD");
             let endDate = moment(to, "YYYY.MM.DD");
@@ -55,7 +56,7 @@ $(document).ready(function () {
         daysNumber = daysNumber+1;
         $('.daysNumber').val(daysNumber);
 
-
+        console.log(from,to);
         $.ajax({
             url:"/apicar/home/search",
             type:'GET',
@@ -67,8 +68,8 @@ $(document).ready(function () {
             dataType:'json',
             success:function(data){
 
-                console.log(data);
-                $('.cars_listing_result').html(data);
+                // TODO: Change this hard coded link later
+                window.location.href = 'http://127.0.0.1:8001/reservation/show?flash=reservation';
             }
         });
 
@@ -81,25 +82,22 @@ $(document).ready(function () {
     $( function () {
 
         let link = window.location.href.split("?")[1];
-        if (link !== undefined){
-            let after_ = link.substring(link.indexOf('=') + 1);
-            let linkToCheck = "flash="+after_;
+        let after_ = link.substring(link.indexOf('=') + 1);
+        let linkToCheck = "flash="+after_;
 
-            if (link === linkToCheck){
+        if (link === linkToCheck){
 
-                console.log(after_);
-                after_ = after_.replace(/\//g, ' ');
-                console.log(after_);
+            console.log(after_);
+            after_ = after_.replace(/\//g, ' ');
+            console.log(after_);
 
-                iziToast.success({
-                    title: 'Ajoute success',
-                    message: after_,
-                });
-                let newLink = window.location.href.split("?")[0];
-                window.history.pushState("", "", newLink);
-            }
+            iziToast.success({
+                title: 'Ajoute success',
+                message: after_,
+            });
+            let newLink = window.location.href.split("?")[0];
+            window.history.pushState("", "", newLink);
         }
-
 
     });
 

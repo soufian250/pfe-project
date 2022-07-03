@@ -2,11 +2,13 @@
 
 namespace ProjectBundle\Form;
 
+use Doctrine\DBAL\Types\DateTimeType;
 use Doctrine\ORM\EntityManagerInterface;
 use ProjectBundle\Entity\Type;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -75,6 +77,13 @@ class CarType extends AbstractType
                     ])
                 ],
             ])
+            ->add('insurance_date',DateType::class,array(
+                'widget' => 'single_text',
+                'choice_translation_domain'=>true,
+                'placeholder' => [
+                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
+                ]
+            ))
             ->add('save', SubmitType::class, ['label' => 'Valider']);
     }
 

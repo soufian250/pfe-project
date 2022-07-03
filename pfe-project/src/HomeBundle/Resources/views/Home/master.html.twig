@@ -25,6 +25,10 @@
         <!-- iziToast Notif-->
         <link href="{{ asset('assets/lib/iziToast/dist/css/iziToast.css') }}" rel="stylesheet" type="text/css" />
 
+
+        <!-- flatpickr date -->
+        <link href="{{ asset('assets/lib/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
+
     </head>
 
     <body>
@@ -141,6 +145,13 @@
         <!-- iziToast -->
         <script src="{{ asset('assets/lib/iziToast/dist/js/iziToast.min.js') }}"></script>
 
+        <!-- Datepicker JS -->
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+        <!-- MomentJs -->
+        <script src="{{ asset('assets/lib/Momentjs/moment.min.js') }}"></script>
+
+
 
                 {% block javascripts %}
             {% javascripts '@ProjectBundle/Resources/public/js/*'
@@ -151,6 +162,8 @@
             {% endjavascripts %}
 
         {% endblock %}
+
+            </div>
     </body>
 
 </html>

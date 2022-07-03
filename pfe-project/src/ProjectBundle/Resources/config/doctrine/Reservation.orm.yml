@@ -31,5 +31,10 @@ ProjectBundle\Entity\Reservation:
       inversedBy: clients
       cascade: { }
       orphanRemoval: false
+    car:
+      targetEntity: ProjectBundle\Entity\Car
+      inversedBy: cars
+      cascade: { }
+      orphanRemoval: false
   lifecycleCallbacks: {  }
 

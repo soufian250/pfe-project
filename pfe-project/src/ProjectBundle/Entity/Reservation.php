@@ -196,4 +196,37 @@ class Reservation
     {
         return $this->client;
     }
+    /**
+     * @var \ProjectBundle\Entity\Car
+     */
+    private $car;
+
+
+    /**
+     * Set car
+     *
+     * @param \ProjectBundle\Entity\Car $car
+     *
+     * @return Reservation
+     */
+    public function setCar(\ProjectBundle\Entity\Car $car = null)
+    {
+        $this->car = $car;
+
+        return $this;
+    }
+
+    /**
+     * Get car
+     *
+     * @return \ProjectBundle\Entity\Car
+     */
+    public function getCar()
+    {
+        return $this->car;
+    }
+
+    public function getThisClass() {
+        return Reservation::class;
+    }
 }

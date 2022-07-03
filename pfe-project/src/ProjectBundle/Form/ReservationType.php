@@ -4,6 +4,7 @@ namespace ProjectBundle\Form;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
+use ProjectBundle\Entity\Car;
 use ProjectBundle\Entity\Client;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -32,6 +33,16 @@ class ReservationType extends AbstractType
             ->add('client',EntityType::class,array(
                 'class'=>Client::class,
                 'choice_label'=>'firstName',
+                'required'=>true,
+               /* 'query_builder'=>function(EntityRepository $er){
+                    return $er->createQueryBuilder('c')
+                        ->Where('c.statusReservation = :statusReservation')
+                        ->setParameter('statusReservation',false);
+                }*/
+            ))
+            ->add('car',EntityType::class,array(
+                'class'=>Car::class,
+                'choice_label'=>'name',
                 'required'=>true,
                 'query_builder'=>function(EntityRepository $er){
                     return $er->createQueryBuilder('c')
