@@ -1,0 +1,17 @@
+<?php
+
+namespace ProjectBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AuditLog
+ */
+class AuditLog
+{
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime('now'));
+    }
+
+}

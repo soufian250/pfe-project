@@ -154,6 +154,8 @@ class ApiRestProjectController extends FOSRestController
                 ->getQuery()->getResult();
 
 
+
+
         $response=$this->render('@Home/Home/index.html.twig',[ "cars"=>$cars]);
         $response->headers->set('Content-Type', 'text/html');
 

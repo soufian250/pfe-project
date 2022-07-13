@@ -348,16 +348,17 @@
                              <h5 class="card-title">Activité récente <span>| Aujourd'hui</span></h5>
 
                              <div class="activity">
-                                 {% for auditLog in AuditLog() %}
-                                 <div class="activity-item d-flex">
-                                     {% set activity = ['Un ligne ajouter par ','Une ligne modifier par ','Une ligne supprimer par '] %}
+
+                                     {% for auditLog in AuditLog() %}
+                                     <div class="activity-item d-flex">
+                                         {% set activity = ['Un ligne ajouter par ','Une ligne modifier par ','Une ligne supprimer par '] %}
 
                                          <div class="activite-label">{{ auditLog.dateActivity | date('d/m/Y H:i:s') }}</div>
                                          <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
                                          <div class="activity-content">
 
                                              {% if auditLog.activity ==  'add'%}
-                                                {{ activity[0] }}
+                                                 {{ activity[0] }}
                                              {% elseif auditLog.activity ==  'update'%}
                                                  {{ activity[1] }}
                                              {% elseif auditLog.activity ==  'remove'%}
@@ -367,8 +368,10 @@
                                          </div>
 
 
-                                 </div>
+                                     </div>
                                  {% endfor %}
+
+
 
                              </div>
 
