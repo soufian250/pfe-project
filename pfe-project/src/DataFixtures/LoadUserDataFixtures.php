@@ -37,15 +37,15 @@ class LoadUserDataFixtures extends AbstractFixture implements ORMFixtureInterfac
 
         $user = new \UserBundle\Entity\User();
 
-        $password = 'zineb';
+        $password = 'soufian';
 
         $user->setSalt(md5(uniqid()));
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
         $user->setPassword($encoder->encodePassword($password, $user->getSalt()));
 
 
-        $user->setUsername('zineb');
-        $user->setEmail('zineb@gmail.com');
+        $user->setUsername('soufian');
+        $user->setEmail('soufian@gmail.com');
 
         $manager->persist($user);
         $manager->flush();

@@ -229,4 +229,91 @@ class Reservation
     public function getThisClass() {
         return Reservation::class;
     }
+    /**
+     * @var bool
+     */
+    private $statusReservation = false;
+
+
+    /**
+     * Set statusReservation.
+     *
+     * @param bool $statusReservation
+     *
+     * @return Reservation
+     */
+    public function setStatusReservation($statusReservation)
+    {
+        $this->statusReservation = $statusReservation;
+
+        return $this;
+    }
+
+    /**
+     * Get statusReservation.
+     *
+     * @return bool
+     */
+    public function getStatusReservation()
+    {
+        return $this->statusReservation;
+    }
+    /**
+     * @var float
+     */
+    private $amountTotal = 0;
+
+
+    /**
+     * Set amountTotal.
+     *
+     * @param float $amountTotal
+     *
+     * @return Reservation
+     */
+    public function setAmountTotal($amountTotal)
+    {
+        $this->amountTotal = $amountTotal;
+
+        return $this;
+    }
+
+    /**
+     * Get amountTotal.
+     *
+     * @return float
+     */
+    public function getAmountTotal()
+    {
+        return $this->amountTotal;
+    }
+    /**
+     * @var bool
+     */
+    private $cautionStatus = false;
+
+
+    /**
+     * Set cautionStatus.
+     *
+     * @param bool $cautionStatus
+     *
+     * @return Reservation
+     */
+    public function setCautionStatus($cautionStatus)
+    {
+        $this->cautionStatus = $cautionStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get cautionStatus.
+     *
+     * @return bool
+     */
+    public function getCautionStatus()
+    {
+        return $this->cautionStatus;
+    }
 }

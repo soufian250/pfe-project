@@ -43,6 +43,14 @@ ProjectBundle\Entity\Car:
             nullable: true
             options:
                 default: false
+        rentAmount:
+            type: float
+            options:
+                default: 0
+        caution:
+            type: float
+            options:
+                default: 0
         insurance_date :
             type: datetime
             nullable: true

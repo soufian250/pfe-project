@@ -105,4 +105,14 @@ class HomeController extends Controller
         $posts  = $this->get('knp_paginator')->paginate($listePosts,$request->query->get('page', 1), 6);
         return  $this->render('@Home/Home/blog.html.twig',['posts'=>$posts]);
     }
+
+    /**
+     * @Route("/blog/{id}", name="singleBlog")
+     */
+    public function singleBlogAction(int $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $post = $em->getRepository('ProjectBundle:Post')->find($id);
+        return  $this->render('@Home/Home/singleblog.html.twig',['post'=>$post]);
+    }
 }

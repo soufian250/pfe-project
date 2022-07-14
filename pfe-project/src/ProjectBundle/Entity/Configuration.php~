@@ -1,0 +1,21 @@
+<?php
+
+namespace ProjectBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Configuration
+ *
+ */
+class Configuration
+{
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime('now');
+    }
+
+
+
+}

@@ -8,6 +8,7 @@ use ProjectBundle\Entity\Car;
 use ProjectBundle\Entity\Client;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -46,10 +47,11 @@ class ReservationType extends AbstractType
                 'required'=>true,
                 'query_builder'=>function(EntityRepository $er){
                     return $er->createQueryBuilder('c')
-                        ->Where('c.statusReservation = :statusReservation')
-                        ->setParameter('statusReservation',false);
+                         ->Where('c.statusReservation = :statusReservation')
+                         ->setParameter('statusReservation',false);
                 }
             ))
+            ->add('cautionStatus', CheckboxType::class, ['label' => 'Caution'])
             ->add('save', SubmitType::class, ['label' => 'Valider']);
 
     }

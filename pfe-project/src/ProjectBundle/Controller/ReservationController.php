@@ -48,7 +48,6 @@ class ReservationController extends Controller
 
 
             $reservation = $form->getData();
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($reservation);
             $entityManager->flush();
