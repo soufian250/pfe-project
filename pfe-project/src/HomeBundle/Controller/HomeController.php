@@ -7,6 +7,7 @@ use Knp\Component\Pager\PaginatorInterface;
 //use Nette\Application\Request;
 use ProjectBundle\Entity\Car;
 use ProjectBundle\Entity\Post;
+use HomeBundle\Entity\Avis;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +32,8 @@ class HomeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $cars =$em->getRepository('ProjectBundle:Car')->createQueryBuilder('c')->setMaxResults(6)->getQuery()->getResult();
-        return  $this->render('@Home/Home/index.html.twig' ,['cars'=>$cars]);
+        $avis =$em->getRepository('HomeBundle:Avis')->createQueryBuilder('a')->setMaxResults(3)->getQuery()->getResult();
+        return  $this->render('@Home/Home/index.html.twig' ,['cars'=>$cars,'avis'=>$avis]);
     }
 
     /**
@@ -107,5 +109,13 @@ class HomeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $post = $em->getRepository('ProjectBundle:Post')->find($id);
         return  $this->render('@Home/Home/singleblog.html.twig',['post'=>$post]);
+    }
+
+     /**
+     * @Route("/conditions", name="conditions")
+     */
+    public function conditionsAction()
+    {
+        return  $this->render('@Home/Home/conditions.html.twig');
     }
 }

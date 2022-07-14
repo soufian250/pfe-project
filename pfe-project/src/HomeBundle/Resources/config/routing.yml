@@ -36,3 +36,8 @@ blog:
 singleBlog:
     path: /blog/{id}
     defaults: { _controller: HomeBundle:Home:singleBlog }
+
+#Conditions
+conditions:
+    path: /conditions
+    defaults: { _controller: HomeBundle:Home:conditions }
