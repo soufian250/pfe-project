@@ -69,6 +69,7 @@ class ApiRestProjectController extends FOSRestController
         $formTime = $request->query->get('startTime');
         $toTime = $request->query->get('endTime');
         $selectedUser = $request->query->get('selectedUser');
+        $selectedCar = $request->query->get('selectedCar');
 
 
         $dateFrom = new \DateTime($form);
@@ -88,17 +89,27 @@ class ApiRestProjectController extends FOSRestController
         $test2 = new \DateTime($timeTo);
 
         $client = $this->getDoctrine()->getRepository(Client::class)->find(intval($selectedUser));
+        $car = $this->getDoctrine()->getRepository(Car::class)->find(intval($selectedCar));
 
         $client->setReservationNumber($client->getReservationNumber() + 1);
 
-        $client->setStatusReservation(true);
+        $rentAmount = $car->getRentAmount();
+
         $reservation = new Reservation();
+
+        $client->setStatusReservation(true);
+        $car->setStatusReservation(true);
+        $reservation->setStatusReservation(true);
+
         $reservation->setStartDate($dateFrom);
         $reservation->setEndDate($dateTo);
         $reservation->setStartTime($test);
         $reservation->setEndTime($test2);
         $reservation->setClient($client);
         $reservation->setDaysNumber(intval($daysNumber));
+
+        $reservation->setAmountTotal(intval($daysNumber) *floatval($rentAmount));
+        $reservation->setCar($car);
 
         $em->persist($reservation);
         $em->flush();

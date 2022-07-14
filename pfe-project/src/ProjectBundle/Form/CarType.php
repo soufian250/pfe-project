@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -48,7 +49,9 @@ class CarType extends AbstractType
             ->add('fuel', TextType::class,[
                  'data' => 'Petrol',
             ])
-            ->add('air_conditioner', CheckboxType::class)
+            ->add('air_conditioner', CheckboxType::class,[
+                'required'=>false
+            ])
             ->add('passenger', TextType::class,[
                  'data' => 4,
             ])
@@ -83,7 +86,12 @@ class CarType extends AbstractType
                 'placeholder' => [
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
                 ]
-            ))
+            ))->add('rentAmount', MoneyType::class,[
+                'currency'=>'MAD'
+            ])
+            ->add('caution', MoneyType::class,[
+                'currency'=>'MAD'
+            ])
             ->add('save', SubmitType::class, ['label' => 'Valider']);
     }
 

@@ -25,6 +25,18 @@ ProjectBundle\Entity\Reservation:
       type: integer
       length: 10
       nullable: true
+    statusReservation:
+      type: boolean
+      options:
+        default: false
+    amountTotal:
+      type: float
+      options:
+        default: 0
+    cautionStatus:
+      type: boolean
+      options:
+        default: false
   manyToOne:
     client:
       targetEntity: ProjectBundle\Entity\Client

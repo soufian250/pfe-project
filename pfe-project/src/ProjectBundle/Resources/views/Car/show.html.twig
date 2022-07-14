@@ -27,6 +27,7 @@
                                     <th scope="col">Image</th>
                                     <th scope="col">Voiture</th>
                                     <th scope="col">Action</th>
+                                    <th scope="col">Status huile</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -34,7 +35,8 @@
                                         <tr>
 {#                                            <th ><a href="#"><img  src="{{ asset('assets/img/product-1.jpg') }}" alt=""></a></th>#}
                                             {% if car.imageName != "" %}
-                                                <th scope="row"> <img alt="car" width="30px" height="30px" src="{{ asset('uploads/recar/images/'~car.imageName)  }}" /></th>
+
+                                                <th scope="row"> <img alt="car" width="65px" height="65px" src="{{ asset('uploads/recar/car/images/'~car.imageName)  }}" /></th>
                                             {% endif %}
                                             <td>{{ car.name }}</td>
                                             <td>
@@ -42,6 +44,8 @@
                                                 <a href="#" onclick="deleteCar({{ car.id }})"> <i style="color: red" class="ri-delete-bin-3-line m-2"> </i></a>
                                                 <a href="{{ path('car_detail',{'id':car.id }) }}"> <i class="ri-information-line"> </i></a>
                                             </td>
+                                            {# TODO: make the status dynamique #}
+                                            <td><span  class="badge bg-success">Bien</span></td>
                                         </tr>
 
 

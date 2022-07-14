@@ -57,3 +57,10 @@ services:
       arguments: [ "@doctrine.orm.entity_manager",'@service_container' ]
       tags:
         - { name: form.type }
+
+  #Configuration
+    configuration.configuration_type:
+      class: ProjectBundle\Form\ConfigurationType
+      arguments: [ "@doctrine.orm.entity_manager",'@service_container' ]
+      tags:
+        - { name: form.type }

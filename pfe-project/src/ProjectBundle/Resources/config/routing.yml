@@ -66,6 +66,10 @@ client_edit:
     path: /client/edit/{id}
     defaults: { _controller: ProjectBundle:Client:edit }
 
+client_reservation:
+    path: /client/reservation/{id}
+    defaults: { _controller: ProjectBundle:Client:reservation }
+
 
 #Blog
 post_add:
@@ -89,3 +93,18 @@ post_list:
 user_profile:
     path: /user/profile
     defaults: { _controller: ProjectBundle:Default:userProfile }
+
+
+
+#Configuration
+configuration_add:
+    path: /configuration/add
+    defaults: { _controller: ProjectBundle:Configuration:add }
+
+configuration_show:
+    path: /configuration/show
+    defaults: { _controller: ProjectBundle:Configuration:show }
+
+configuration_edit:
+    path: /configuration/edit/{id}
+    defaults: { _controller: ProjectBundle:Configuration:edit }

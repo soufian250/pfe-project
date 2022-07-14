@@ -4,6 +4,7 @@ namespace ProjectBundle\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use ProjectBundle\Entity\Client;
+use ProjectBundle\Entity\Reservation;
 use ProjectBundle\Form\ClientType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -17,10 +18,28 @@ class ClientController extends Controller
 {
 
 
-
     public function indexAction()
     {
         return  $this->render('@Project/Default/index.html.twig');
+    }
+
+    public function reservationAction(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reservations=$em->getRepository(Reservation::class)->createQueryBuilder('r')
+                        ->leftJoin('r.client','c')
+                        ->where('c.id = :id')
+                        ->setParameter('id',$id)
+                        ->getQuery()
+                        ->getResult();
+
+
+        $user = $em->getRepository(Client::class)->find($id);
+
+        return  $this->render('@Project/Reservation/user_reservation.html.twig',[
+            'reservations'=>$reservations,
+            'user'=>$user
+        ]);
     }
 
     public function showAction()

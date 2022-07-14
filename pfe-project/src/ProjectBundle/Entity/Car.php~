@@ -508,33 +508,4 @@ class Car
     {
         return $this->rentAmount;
     }
-    /**
-     * @var float
-     */
-    private $caution = 0;
-
-
-    /**
-     * Set caution.
-     *
-     * @param float $caution
-     *
-     * @return Car
-     */
-    public function setCaution($caution)
-    {
-        $this->caution = $caution;
-
-        return $this;
-    }
-
-    /**
-     * Get caution.
-     *
-     * @return float
-     */
-    public function getCaution()
-    {
-        return $this->caution;
-    }
 }
