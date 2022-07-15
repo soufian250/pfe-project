@@ -49,7 +49,6 @@ $(document).ready(function(){
 
                     // TODO: Change this hard coded link later
                     let link = window.location.protocol + "//" + window.location.host;
-                    console.log(link);
                     window.location.href = link+'/reservation/show?flash=reservation';
                 }
             });

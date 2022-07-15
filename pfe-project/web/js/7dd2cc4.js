@@ -106,6 +106,26 @@ function deleteClient(idClient) {
 
 $(document).ready(function(){
 
+    var editor = new Quill('#editor', {
+        modules: {
+            'syntax': true,
+            'toolbar': [
+                [{ 'font': [] }, { 'size': [] }],
+                [ 'bold', 'italic', 'underline', 'strike' ],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'script': 'super' }, { 'script': 'sub' }],
+                [{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block' ],
+                [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+                [ 'direction', { 'align': [] }],
+                [ 'link', 'image' ],
+                [ 'clean' ]
+            ]
+        },
+
+        placeholder: 'Votre Article...',
+        theme: 'snow',
+    });
+
 
     $("#post_title").keyup(function(e){
         let typedText = $(this).val();

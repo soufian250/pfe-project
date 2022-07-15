@@ -1,5 +1,16 @@
 $(document).ready(function(){
 
+    var editor = new Quill('#editor', {
+        modules: { toolbar: '#toolbar' },
+        toolbar: [
+            [{ header: [1, 2, false] }],
+            ['bold', 'italic', 'underline'],
+            ['image', 'code-block']
+        ],
+        placeholder: 'Votre Article...',
+        theme: 'snow',
+    });
+
 
     $("#post_title").keyup(function(e){
         let typedText = $(this).val();

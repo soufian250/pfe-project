@@ -29,7 +29,11 @@ class PostType extends AbstractType
         $builder ->add('title', TextType::class)
             ->add('body', TextareaType::class)
             ->add('slug', TextType::class)
-            ->add('published', CheckboxType::class)
+            ->add('published', CheckboxType::class,[
+                'attr'=>[
+                    'style'=>'margin-top:180px'
+                ],
+            ])
             ->add('imageName', FileType::class, [
                 'label' => 'Image',
                 'mapped' => false,
