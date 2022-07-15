@@ -66,9 +66,8 @@ $(document).ready(function () {
             },
             dataType:'json',
             success:function(data){
-
-                console.log(data);
-                $('.cars_listing_result').html(data);
+                alert(54);
+                window.document.location = Routing.generate('search');
             }
         });
 

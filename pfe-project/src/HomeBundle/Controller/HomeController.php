@@ -115,4 +115,22 @@ class HomeController extends Controller
         $post = $em->getRepository('ProjectBundle:Post')->find($id);
         return  $this->render('@Home/Home/singleblog.html.twig',['post'=>$post]);
     }
+
+    /**
+     * @Route("/terms", name="terms")
+     */
+    public function termsAction()
+    {
+
+        return  $this->render('@Home/Home/terms.html.twig');
+    }
+
+
+    /**
+     * @Route("/search", name="search")
+     */
+    public function searchAction()
+    {
+        return  $this->render('@Home/Home/search_result.html.twig');
+    }
 }

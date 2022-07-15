@@ -48,7 +48,9 @@ $(document).ready(function(){
                 success:function(data){
 
                     // TODO: Change this hard coded link later
-                     window.location.href = 'http://127.0.0.1:8000/reservation/show?flash=reservation';
+                    let link = window.location.protocol + "//" + window.location.host;
+                    console.log(link);
+                    window.location.href = link+'/reservation/show?flash=reservation';
                 }
             });
 
@@ -151,42 +153,44 @@ $(document).ready(function(){
     });
 
 
-    function deleteReservation(idReservation) {
-
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: 'btn btn-success m-3',
-                cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: false
-        })
-
-        swalWithBootstrapButtons.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel!',
-            reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-
-                $.ajax({
-                    url:"/apicar/reservation/delete",
-                    type:'GET',
-                    data:{
-                        idCar: idCar
-                    },
-                    dataType:'json',
-                    success:function(data){
-                        location.reload();
-                    }
-                });
-            }
-        })
-
-
-    }
 
 })
+
+
+function deleteReservation(idReservation) {
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success m-3',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+        title: 'Êtes-vous sûr?',
+        text: "Vous ne pourrez pas revenir en arrière!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Oui, Supprimer!',
+        cancelButtonText: 'Non, Annuler!',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            $.ajax({
+                url:"/apicar/reservation/delete",
+                type:'GET',
+                data:{
+                    idReservation: idReservation
+                },
+                dataType:'json',
+                success:function(data){
+                    location.reload();
+                }
+            });
+        }
+    })
+
+
+}

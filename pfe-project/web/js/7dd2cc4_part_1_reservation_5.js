@@ -30,7 +30,6 @@ $(document).ready(function(){
             removeErrorBorder('endTime');
 
             let selectedUser = $( "#reservation_client option:selected" ).val()
-            let selectedCar = $( "#reservation_car option:selected" ).val()
 
             $.ajax({
                 url:"/apicar/reservation/add/date",
@@ -41,16 +40,16 @@ $(document).ready(function(){
                     daysNumber: daysNumber,
                     startTime,
                     endTime,
-                    selectedUser: selectedUser,
-                    selectedCar: selectedCar
+                    selectedUser: selectedUser
                 },
                 dataType:'json',
                 success:function(data){
 
                     // TODO: Change this hard coded link later
-                    let link = window.location.protocol + "//" + window.location.host;
-                    console.log(link);
-                    window.location.href = link+'/reservation/show?flash=reservation';
+                    let str = window.location.href.substring(0, str.indexOf("/"));
+                    console.log(str);
+
+                   //window.location.href = 'http://127.0.0.1:8000/reservation/show?flash=reservation';
                 }
             });
 

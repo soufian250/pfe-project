@@ -43,3 +43,13 @@ car_detail:
     path: /cardetail
     defaults: { _controller: HomeBundle:Home:carDetailHome }
 
+#terms
+terms:
+    path: /terms/
+    defaults: { _controller: HomeBundle:Home:terms }
+
+
+#terms
+search:
+    path: /search/
+    defaults: { _controller: HomeBundle:Home:search }

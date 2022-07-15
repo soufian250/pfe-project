@@ -91,7 +91,10 @@ class ApiRestProjectController extends FOSRestController
         $client = $this->getDoctrine()->getRepository(Client::class)->find(intval($selectedUser));
         $car = $this->getDoctrine()->getRepository(Car::class)->find(intval($selectedCar));
 
-        $client->setReservationNumber($client->getReservationNumber() + 1);
+        if ($client != null)
+            $client->setReservationNumber($client->getReservationNumber() + 1);
+        else
+            $client->setReservationNumber(1);
 
         $rentAmount = $car->getRentAmount();
 
@@ -130,6 +133,7 @@ class ApiRestProjectController extends FOSRestController
         $idReservation = $request->query->get('idReservation');
         $em=$this->getDoctrine()->getManager();
         $reservation=$em->getRepository(Reservation::class)->find($idReservation);
+        $reservation->getCar()->setStatusReservation(false);
         $em->remove($reservation);
         $em->flush();
 
@@ -154,10 +158,6 @@ class ApiRestProjectController extends FOSRestController
         $to = $request->query->get('to');
 
 
-        $dateFrom = new \DateTime($form);
-        $dateTo = new \DateTime($to);
-
-
         $cars = $em->getRepository(Car::class)
                 ->createQueryBuilder('c')
                 ->where('c.statusReservation = :statusReservation')
@@ -166,9 +166,8 @@ class ApiRestProjectController extends FOSRestController
 
 
 
-
-        $response=$this->render('@Home/Home/index.html.twig',[ "cars"=>$cars]);
-        $response->headers->set('Content-Type', 'text/html');
+        $response = new Response(json_encode(['cars'=>$cars]));
+        $response->headers->set('Content-Type', 'application/json');
 
         return $response;
 

@@ -18,7 +18,7 @@ onlyNumericValue('#car_seat');
 onlyNumericValue('#car_door');
 onlyNumericValue('#car_passenger');
 
-function deleteCar(idCar) {
+function deleteReservation(idReservation) {
 
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -29,21 +29,21 @@ function deleteCar(idCar) {
     })
 
     swalWithBootstrapButtons.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Etes-vous sûr?',
+        text: "Vous ne pourrez pas revenir en arrière !",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
+        confirmButtonText: 'Oui, supprimer!',
+        cancelButtonText: 'Non, Annuler!',
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
 
             $.ajax({
-                url:"/apicar/car/delete",
+                url:"/apicar/reservation/delete",
                 type:'GET',
                 data:{
-                    idCar: idCar
+                    idReservation: idReservation
                 },
                 dataType:'json',
                 success:function(data){

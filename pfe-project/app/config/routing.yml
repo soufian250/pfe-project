@@ -25,5 +25,8 @@ reclient_api:
     resource: "@HomeBundle/Resources/config/routing_api.yml"
     prefix: /apiclient
 
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
 
 
